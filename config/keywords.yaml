@@ -1,0 +1,160 @@
+# Agent 安全论文关键词配置
+# 用于 arXiv API 查询，标题和摘要都会匹配
+
+# Agent 相关关键词（标题或摘要中至少匹配一个）
+agent_keywords:
+  - "agent"
+  - "LLM agent"
+  - "large language model agent"
+  - "autonomous agent"
+  - "tool use"
+  - "tool-use"
+  - "multi-agent"
+  - "AI agent"
+  - "intelligent agent"
+  - "language agent"
+  - "agentic"
+  - "MCP"
+  - "model context protocol"
+
+# 安全相关关键词（标题或摘要中至少匹配一个）
+security_keywords:
+  - "attack"
+  - "defense"
+  - "defence"
+  - "jailbreak"
+  - "jail break"
+  - "jail-breaking"
+  - "prompt injection"
+  - "prompt-injection"
+  - "indirect prompt injection"
+  - "security"
+  - "safety"
+  - "red team"
+  - "red-team"
+  - "redteaming"
+  - "red teaming"
+  - "adversarial"
+  - "backdoor"
+  - "trojan"
+  - "poisoning"
+  - "data poisoning"
+  - "vulnerability"
+  - "vulnerable"
+  - "exploit"
+  - "misuse"
+  - "abuse"
+  - "guardrail"
+  - "guard rail"
+  - "alignment"
+  - "trustworthy"
+  - "threat"
+  - "privacy"
+  - "leakage"
+  - "data leakage"
+  - "steganography"
+  - "steganographic"
+  - "covert"
+  - "collusion"
+  - "honeypot"
+  - "deception"
+  - "sandbox escape"
+  - "privilege escalation"
+  - "unauthorized access"
+
+# LLM 相关关键词（用于扩大召回，摘要中匹配即可）
+llm_keywords:
+  - "large language model"
+  - "LLM"
+  - "GPT"
+  - "ChatGPT"
+  - "language model"
+  - "foundation model"
+  - "transformer"
+
+# 论文分类标签（按优先级排序，匹配关键词最多的类别优先）
+categories:
+  - name: "jailbreak"
+    description: "越狱攻击"
+    description_en: "Jailbreak Attacks"
+    keywords: ["jailbreak", "jail break", "jail-breaking", "jailbreak attack"]
+
+  - name: "prompt-injection"
+    description: "提示注入攻击"
+    description_en: "Prompt Injection Attacks"
+    keywords: ["prompt injection", "prompt-injection", "indirect prompt injection", "instruction injection"]
+
+  - name: "memory-poisoning"
+    description: "记忆投毒与篡改"
+    description_en: "Memory Poisoning & Tampering"
+    keywords: ["memory poisoning", "memory tampering", "memory attack", "memory manipulation", "forensic trajectory", "memory as an attack surface"]
+
+  - name: "tool-use-attack"
+    description: "工具使用攻击"
+    description_en: "Tool-Use Attacks"
+    keywords: ["tool use attack", "tool-use attack", "tool abuse", "malicious tool", "tool vulnerability", "entity binding failure", "skill supply chain", "agent skill"]
+
+  - name: "backdoor"
+    description: "后门与投毒攻击"
+    description_en: "Backdoor & Poisoning Attacks"
+    keywords: ["backdoor", "trojan", "poisoning", "data poisoning", "sleeper agent", "hidden behaviour", "hidden behavior"]
+
+  - name: "adversarial-attack"
+    description: "对抗攻击"
+    description_en: "Adversarial Attacks"
+    keywords: ["adversarial attack", "adversarial example", "adversarial perturbation", "adversarial robustness"]
+
+  - name: "privacy-leakage"
+    description: "隐私泄露"
+    description_en: "Privacy Leakage"
+    keywords: ["privacy", "privacy-preserving", "data leakage", "information leakage", "re-identification", "reidentification", "leakage"]
+
+  - name: "steganography"
+    description: "隐写与隐蔽通信"
+    description_en: "Steganography & Covert Communication"
+    keywords: ["steganography", "steganographic", "covert communication", "covert channel", "secret collusion", "collusion"]
+
+  - name: "misuse"
+    description: "滥用与误用"
+    description_en: "Misuse & Abuse"
+    keywords: ["misuse", "abuse", "harmful", "misuse potential", "dual-use", "weaponization"]
+
+  - name: "red-teaming"
+    description: "红队测试"
+    description_en: "Red Teaming"
+    keywords: ["red team", "red-team", "redteaming", "red teaming", "red team test"]
+
+  - name: "vulnerability"
+    description: "漏洞与攻击面"
+    description_en: "Vulnerabilities & Attack Surfaces"
+    keywords: ["vulnerability", "vulnerable", "exploit", "attack surface", "cve", "security vulnerability", "logic vulnerability", "vulnerability detection", "vulnerability repair"]
+
+  - name: "defense"
+    description: "防御与防护方法"
+    description_en: "Defense & Protection Methods"
+    keywords: ["defense", "defence", "defend", "guardrail", "guard rail", "guardrails", "firewall", "sandbox", "isolation", "access control", "containment", "monitoring", "detection"]
+
+  - name: "alignment"
+    description: "对齐与安全约束"
+    description_en: "Alignment & Safety Constraints"
+    keywords: ["alignment", "value alignment", "safety alignment", "constitutional ai", "reinforcement learning from human feedback", "rlhf", "action alignment", "behavioral governance", "safety constraint", "reward hacking"]
+
+  - name: "agent-safety"
+    description: "Agent 安全框架"
+    description_en: "Agent Safety Frameworks"
+    keywords: ["agent safety", "agent security", "agentic security", "agent safety framework", "immune system", "agent protocol", "agent lifecycle", "runtime guard", "mission-state governance", "behavioral governance"]
+
+  - name: "benchmark"
+    description: "安全评测与基准"
+    description_en: "Safety Benchmarks & Evaluation"
+    keywords: ["safety benchmark", "security benchmark", "safety evaluation", "adversarial benchmark", "robustness benchmark", "safety testbed", "red team benchmark", "jailbreak benchmark"]
+
+  - name: "survey"
+    description: "综述与系统化"
+    description_en: "Surveys & Systematization"
+    keywords: ["survey", "systematization", "systematic review", "taxonomy", "comprehensive survey", "literature review"]
+
+  - name: "other"
+    description: "其他安全相关"
+    description_en: "Other Security-Related"
+    keywords: []

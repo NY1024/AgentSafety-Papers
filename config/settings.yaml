@@ -1,0 +1,26 @@
+# arXiv 爬取配置
+arxiv:
+  # 每次爬取的最大论文数
+  max_results: 200
+  # 排序方式: SubmittedDate / Relevance / LastUpdatedDate
+  sort_by: "SubmittedDate"
+  # 只爬取最近 N 天的论文（0 表示不限制）
+  days_back: 1
+
+# 数据存储
+storage:
+  # 论文数据 JSON 文件
+  papers_file: "data/papers.json"
+  # 生成的 README 文件
+  readme_file: "README.md"
+  # 已处理论文 ID 记录文件
+  seen_file: "data/seen_ids.json"
+
+# README 生成配置
+readme:
+  # 每页显示论文数
+  page_size: 50
+  # 是否显示摘要
+  show_abstract: true
+  # 摘要最大长度（字符）
+  abstract_max_length: 200
