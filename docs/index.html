@@ -6,6 +6,7 @@
     <title>AgentGuard 🛡️ | LLM Agent Security Papers</title>
     <meta name="description" content="Daily Tracking of LLM Agent Security Papers on arXiv">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <style>
         :root {
             --bg: #0d1117;
@@ -373,13 +374,64 @@
             color: var(--text-muted);
         }
 
-        .loading .spinner {
-            display: inline-block;
-            width: 32px; height: 32px;
-            border: 3px solid var(--border);
-            border-top-color: var(--accent);
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
+        /* ===== Dashboard / Charts ===== */
+        .dashboard-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.6rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            user-select: none;
+            transition: border-color 0.15s;
+        }
+        .dashboard-toggle:hover { border-color: var(--accent); }
+        .dashboard-toggle .toggle-label {
+            font-size: 0.95rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .dashboard-toggle .toggle-arrow {
+            color: var(--text-muted);
+            transition: transform 0.2s;
+            font-size: 0.8rem;
+        }
+        .dashboard-toggle.open .toggle-arrow { transform: rotate(180deg); }
+
+        .dashboard {
+            display: none;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .dashboard.show { display: grid; }
+        .dashboard .chart-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.2rem;
+        }
+        .dashboard .chart-card.full-width { grid-column: 1 / -1; }
+        .dashboard .chart-card h4 {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .dashboard .chart-wrapper {
+            position: relative;
+            height: 280px;
+        }
+        .dashboard .chart-wrapper.tall { height: 320px; }
+
+        @media (max-width: 900px) {
+            .dashboard { grid-template-columns: 1fr; }
         }
 
         @keyframes spin { to { transform: rotate(360deg); } }
@@ -474,6 +526,24 @@
                 <option value="newest">Newest First</option>
                 <option value="oldest">Oldest First</option>
             </select>
+        </div>
+        <div class="dashboard-toggle" id="dashboard-toggle" onclick="toggleDashboard()">
+            <span class="toggle-label">📊 Statistics Dashboard</span>
+            <span class="toggle-arrow">▼</span>
+        </div>
+        <div class="dashboard" id="dashboard">
+            <div class="chart-card">
+                <h4>📂 Papers by Category</h4>
+                <div class="chart-wrapper"><canvas id="chart-pie"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <h4>🏆 Top Categories</h4>
+                <div class="chart-wrapper"><canvas id="chart-bar"></canvas></div>
+            </div>
+            <div class="chart-card full-width">
+                <h4>📈 Publication Trend (by Month)</h4>
+                <div class="chart-wrapper tall"><canvas id="chart-line"></canvas></div>
+            </div>
         </div>
         <div class="results-info" id="results-info"></div>
         <div id="paper-list">
@@ -659,6 +729,162 @@ document.getElementById('sort').addEventListener('change', e => {
     sortBy = e.target.value;
     renderPapers();
 });
+
+let charts = {};
+let dashboardOpen = false;
+
+function toggleDashboard() {
+    dashboardOpen = !dashboardOpen;
+    const toggle = document.getElementById('dashboard-toggle');
+    const dash = document.getElementById('dashboard');
+    if (dashboardOpen) {
+        toggle.classList.add('open');
+        dash.classList.add('show');
+        renderCharts();
+    } else {
+        toggle.classList.remove('open');
+        dash.classList.remove('show');
+    }
+}
+
+const CAT_COLORS = {
+    'jailbreak': '#f85149', 'prompt-injection': '#f778ba', 'memory-poisoning': '#d29922',
+    'tool-use-attack': '#bc8cff', 'backdoor': '#ff7b72', 'adversarial-attack': '#e3b341',
+    'privacy-leakage': '#d2a8ff', 'steganography': '#adb1b8', 'misuse': '#dbab09',
+    'red-teaming': '#ffa198', 'vulnerability': '#ff9ecf', 'defense': '#3fb950',
+    'alignment': '#58a6ff', 'agent-safety': '#56d364', 'benchmark': '#bc8cff',
+    'survey': '#b8c0c8', 'other': '#6e7681'
+};
+
+const CHART_FONT = "'-apple-system', 'BlinkMacSystemFont', 'Segoe UI', sans-serif";
+
+function destroyCharts() {
+    Object.values(charts).forEach(c => c && c.destroy());
+    charts = {};
+}
+
+function renderCharts() {
+    destroyCharts();
+    renderPieChart();
+    renderBarChart();
+    renderLineChart();
+}
+
+function renderPieChart() {
+    const counts = {};
+    allPapers.forEach(p => {
+        const c = p.category || 'other';
+        counts[c] = (counts[c] || 0) + 1;
+    });
+
+    const labels = Object.keys(counts).sort((a, b) => counts[b] - counts[a]);
+    const data = labels.map(l => counts[l]);
+    const colors = labels.map(l => CAT_COLORS[l] || '#6e7681');
+
+    charts.pie = new Chart(document.getElementById('chart-pie'), {
+        type: 'doughnut',
+        data: {
+            labels: labels.map(l => `${l} (${counts[l]})`),
+            datasets: [{ data, backgroundColor: colors, borderColor: '#161b22', borderWidth: 2 }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'right',
+                    labels: { color: '#8b949e', font: { size: 11, family: CHART_FONT }, boxWidth: 12, padding: 6 }
+                },
+                tooltip: { bodyFont: { family: CHART_FONT } }
+            }
+        }
+    });
+}
+
+function renderBarChart() {
+    const counts = {};
+    allPapers.forEach(p => {
+        const c = p.category || 'other';
+        counts[c] = (counts[c] || 0) + 1;
+    });
+
+    const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 10);
+    const labels = sorted.map(e => e[0]);
+    const data = sorted.map(e => e[1]);
+    const colors = labels.map(l => CAT_COLORS[l] || '#6e7681');
+
+    charts.bar = new Chart(document.getElementById('chart-bar'), {
+        type: 'bar',
+        data: {
+            labels,
+            datasets: [{ data, backgroundColor: colors, borderRadius: 4 }]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                tooltip: { bodyFont: { family: CHART_FONT } }
+            },
+            scales: {
+                x: { ticks: { color: '#8b949e', font: { family: CHART_FONT } }, grid: { color: '#21262d' } },
+                y: { ticks: { color: '#8b949e', font: { family: CHART_FONT, size: 11 } }, grid: { display: false } }
+            }
+        }
+    });
+}
+
+function renderLineChart() {
+    const monthly = {};
+    allPapers.forEach(p => {
+        const m = (p.published || '').slice(0, 7);
+        if (m >= '2022-01') {
+            monthly[m] = (monthly[m] || 0) + 1;
+        }
+    });
+
+    const sortedMonths = Object.keys(monthly).sort();
+    const labels = sortedMonths;
+    const data = sortedMonths.map(m => monthly[m]);
+
+    charts.line = new Chart(document.getElementById('chart-line'), {
+        type: 'line',
+        data: {
+            labels,
+            datasets: [{
+                label: 'Papers per Month',
+                data,
+                borderColor: '#58a6ff',
+                backgroundColor: 'rgba(56,139,253,0.1)',
+                fill: true,
+                tension: 0.35,
+                pointRadius: 2,
+                pointHoverRadius: 5,
+                pointBackgroundColor: '#58a6ff'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                tooltip: { bodyFont: { family: CHART_FONT } }
+            },
+            scales: {
+                x: {
+                    ticks: { color: '#8b949e', font: { family: CHART_FONT, size: 10 }, maxRotation: 45, autoSkip: true, maxTicksLimit: 20 },
+                    grid: { color: '#21262d' }
+                },
+                y: {
+                    ticks: { color: '#8b949e', font: { family: CHART_FONT } },
+                    grid: { color: '#21262d' },
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
 
 loadPapers();
 </script>
