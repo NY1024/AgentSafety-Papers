@@ -10,6 +10,13 @@ def generate_readme(papers: List[Paper], config: Config) -> str:
     """生成 README.md 内容"""
     lines = []
 
+    # 只在 README 中展示最近 90 天的论文，完整列表在 GitHub Pages
+    cutoff_date = datetime.now().strftime("%Y-%m-%d")
+    from datetime import timedelta
+    cutoff = (datetime.now() - timedelta(days=90)).strftime("%Y-%m-%d")
+    recent_papers = [p for p in papers if p.published >= cutoff]
+    archived_papers = [p for p in papers if p.published < cutoff]
+
     # ---- 头部 ----
     lines.append('<div align="center">')
     lines.append("")
@@ -18,7 +25,7 @@ def generate_readme(papers: List[Paper], config: Config) -> str:
     lines.append("**Daily Tracking of LLM Agent Security Papers on arXiv**")
     lines.append("")
     lines.append("[![Auto Update](https://github.com/NY1024/AgentSafety-Papers/actions/workflows/daily-update.yml/badge.svg)](https://github.com/NY1024/AgentSafety-Papers/actions/workflows/daily-update.yml)")
-    lines.append("[![Papers](https://img.shields.io/badge/Papers-{}-blue)](#)".format(len(papers)))
+    lines.append(f"[![Papers](https://img.shields.io/badge/Papers-{len(papers)}-blue)](#)")
     lines.append("[![License](https://img.shields.io/badge/License-MIT-green)](#)")
     lines.append("")
     lines.append("</div>")
@@ -33,7 +40,9 @@ def generate_readme(papers: List[Paper], config: Config) -> str:
     lines.append("")
     lines.append("*Automatically tracking the latest LLM Agent security papers on arXiv, updated daily with keyword-based classification.*")
     lines.append("")
-    lines.append(f"**最近更新 / Last Updated**: {datetime.now().strftime('%Y-%m-%d %H:%M')} ｜ **论文总数 / Total Papers**: {len(papers)}")
+    lines.append(f"**最近更新 / Last Updated**: {datetime.now().strftime('%Y-%m-%d %H:%M')} ｜ **论文总数 / Total Papers**: {len(papers)}（近 90 天 / Recent 90 days: {len(recent_papers)}）")
+    lines.append("")
+    lines.append("🌐 **[GitHub Pages](https://ny1024.github.io/AgentSafety-Papers/)** — 完整论文列表（含摘要可折叠展示）/ Full paper list with collapsible abstracts")
     lines.append("")
 
     # ---- 分类导航 ----
@@ -52,42 +61,30 @@ def generate_readme(papers: List[Paper], config: Config) -> str:
             lines.append(f"- **[{cat_def.name}](#-{anchor})** — {desc} — {count}")
     lines.append("")
 
-    # ---- 各分类论文列表 ----
+    # ---- 各分类论文列表（仅近90天，紧凑单行格式） ----
+    lines.append(f"## 📄 近期论文 / Recent Papers (Last 90 Days)")
+    lines.append("")
+    lines.append(f"> 完整论文列表（含 {len(archived_papers)} 篇历史论文）请访问 [GitHub Pages](https://ny1024.github.io/AgentSafety-Papers/)")
+    lines.append("")
+    lines.append(f"> Full archive ({len(archived_papers)} historical papers) available on [GitHub Pages](https://ny1024.github.io/AgentSafety-Papers/)")
+    lines.append("")
+
     for cat_def in config.keywords.categories:
-        cat_papers = [p for p in papers if (p.category or "other") == cat_def.name]
+        cat_papers = [p for p in recent_papers if (p.category or "other") == cat_def.name]
         if not cat_papers:
             continue
-        # 分类内按日期从近到远排序
         cat_papers.sort(key=lambda p: p.published, reverse=True)
 
         desc = f"{cat_def.description} / {cat_def.description_en}" if cat_def.description_en else cat_def.description
-        lines.append(f"## 📂 {cat_def.name}")
-        lines.append(f"*{desc}*")
+        lines.append(f"### 📂 {cat_def.name}")
+        lines.append(f"*{desc}* — {len(cat_papers)} papers")
         lines.append("")
 
         for p in cat_papers:
-            arxiv_id = p.arxiv_id
-            lines.append(f"### [{p.title}]({p.abs_url})")
-            lines.append("")
-            lines.append(f"- **arXiv ID**: `{arxiv_id}`")
-            lines.append(f"- **作者 / Authors**: {', '.join(p.authors[:5])}{' et al.' if len(p.authors) > 5 else ''}")
-            lines.append(f"- **发布日期 / Published**: {p.published}")
-            if p.primary_category:
-                lines.append(f"- **分类 / Category**: {p.primary_category}")
-            # 可折叠的 abstract
-            if p.abstract:
-                lines.append("")
-                lines.append("<details>")
-                lines.append("<summary>📝 Abstract</summary>")
-                lines.append("")
-                lines.append(p.abstract)
-                lines.append("")
-                lines.append("</details>")
-                lines.append("")
-            lines.append(f"- **链接 / Links**: [Abstract]({p.abs_url}) | [PDF]({p.pdf_url})")
-            if p.has_code and p.code_url:
-                lines.append(f"- **代码 / Code**: [GitHub]({p.code_url})")
-            lines.append("")
+            title = p.title.strip()
+            lines.append(f"- **{p.published}** [{title}]({p.abs_url})")
+
+        lines.append("")
 
     # ---- 统计 ----
     if category_counts:
