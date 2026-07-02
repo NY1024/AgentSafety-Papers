@@ -9,32 +9,73 @@ agent_keywords:
   - "autonomous agent"
   - "tool use"
   - "tool-use"
+  - "tool calling"
+  - "tool-augmented"
+  - "function calling"
+  - "function call"
   - "multi-agent"
+  - "multiagent"
   - "AI agent"
   - "intelligent agent"
   - "language agent"
   - "agentic"
   - "MCP"
   - "model context protocol"
+  - "ReAct"
+  - "AutoGPT"
+  - "BabyAGI"
+  - "LangChain"
+  - "LangGraph"
+  - "AutoGen"
+  - "code interpreter"
+  - "web agent"
+  - "GUI agent"
+  - "browser agent"
+  - "computer use"
+  - "computer agent"
+  - "embodied agent"
+  - "embodied AI"
+  - "vision-language-action"
+  - "VLA"
+  - "digital assistant"
+  - "conversational agent"
+  - "chatbot"
+  - "dialogue system"
+  - "copilot"
+  - "RAG agent"
+  - "retrieval-augmented"
+  - "retrieval augmented generation"
+  - "in-context learning agent"
+  - "LLM-based system"
+  - "LLM-powered"
+  - "LLM-driven"
+  - " autonomous system"
 
 # 安全相关关键词（标题或摘要中至少匹配一个）
 security_keywords:
   - "attack"
+  - "attacker"
   - "defense"
   - "defence"
+  - "defend"
   - "jailbreak"
   - "jail break"
   - "jail-breaking"
+  - "jailbreak attack"
   - "prompt injection"
   - "prompt-injection"
   - "indirect prompt injection"
+  - "instruction injection"
   - "security"
   - "safety"
+  - "safe AI"
   - "red team"
   - "red-team"
   - "redteaming"
   - "red teaming"
   - "adversarial"
+  - "adversarial attack"
+  - "adversarial example"
   - "backdoor"
   - "trojan"
   - "poisoning"
@@ -46,12 +87,17 @@ security_keywords:
   - "abuse"
   - "guardrail"
   - "guard rail"
+  - "guardrails"
   - "alignment"
   - "trustworthy"
+  - "trustworthiness"
   - "threat"
+  - "threat model"
   - "privacy"
+  - "privacy-preserving"
   - "leakage"
   - "data leakage"
+  - "information leakage"
   - "steganography"
   - "steganographic"
   - "covert"
@@ -61,53 +107,121 @@ security_keywords:
   - "sandbox escape"
   - "privilege escalation"
   - "unauthorized access"
+  - "manipulation"
+  - "social engineering"
+  - "phishing"
+  - "fraud"
+  - "scam"
+  - "model extraction"
+  - "model stealing"
+  - "membership inference"
+  - "data extraction"
+  - "training data extraction"
+  - "unlearning"
+  - "machine unlearning"
+  - "content filtering"
+  - "content filter"
+  - "toxicity"
+  - "harmful content"
+  - "harmful"
+  - "unsafe"
+  - "bias"
+  - "fairness"
+  - "robustness"
+  - "watermark"
+  - "watermarking"
+  - "fingerprinting"
+  - "constitutional AI"
+  - "provenance"
+  - "attribution"
+  - "forensics"
+  - "anomaly detection"
+  - "intrusion detection"
+  - "malware"
+  - "ransomware"
+  - "supply chain"
+  - "reward hacking"
+  - "specification gaming"
+  - "goal misgeneralization"
+  - "deceptive alignment"
+  - "instrumental convergence"
+  - "corrigibility"
+  - "interpretability"
+  - "explainability"
+  - "censorship"
+  - "censoring"
+  - "circumvent"
+  - "bypass"
+  - "evasion"
+  - "tampering"
+  - "forgery"
+  - "impersonation"
 
 # LLM 相关关键词（用于扩大召回，摘要中匹配即可）
 llm_keywords:
   - "large language model"
   - "LLM"
+  - "LLMs"
   - "GPT"
   - "ChatGPT"
+  - "GPT-4"
   - "language model"
+  - "language models"
   - "foundation model"
+  - "foundation models"
   - "transformer"
+  - "instruction tuning"
+  - "RLHF"
+  - "reinforcement learning from human feedback"
+  - "fine-tuning"
+  - "fine-tuned"
+  - "in-context learning"
+  - "chain of thought"
+  - "chain-of-thought"
+  - "diffusion model"
+  - "multimodal"
+  - "multi-modal"
+  - "vision-language"
+  - "text-to-image"
+  - "code generation"
+  - "code LLM"
 
 # 论文分类标签（按优先级排序，匹配关键词最多的类别优先）
 categories:
   - name: "jailbreak"
     description: "越狱攻击"
     description_en: "Jailbreak Attacks"
-    keywords: ["jailbreak", "jail break", "jail-breaking", "jailbreak attack"]
+    keywords: ["jailbreak", "jail break", "jail-breaking", "jailbreak attack", "do anything now", "DAN attack"]
 
   - name: "prompt-injection"
     description: "提示注入攻击"
     description_en: "Prompt Injection Attacks"
-    keywords: ["prompt injection", "prompt-injection", "indirect prompt injection", "instruction injection"]
+    keywords: ["prompt injection", "prompt-injection", "indirect prompt injection", "instruction injection", "injection attack", "prompt-level attack"]
 
   - name: "memory-poisoning"
     description: "记忆投毒与篡改"
     description_en: "Memory Poisoning & Tampering"
-    keywords: ["memory poisoning", "memory tampering", "memory attack", "memory manipulation", "forensic trajectory", "memory as an attack surface"]
+    keywords: ["memory poisoning", "memory tampering", "memory attack", "memory manipulation", "forensic trajectory", "memory as an attack surface", "RAG poisoning", "retrieval poisoning"]
 
   - name: "tool-use-attack"
     description: "工具使用攻击"
     description_en: "Tool-Use Attacks"
-    keywords: ["tool use attack", "tool-use attack", "tool abuse", "malicious tool", "tool vulnerability", "entity binding failure", "skill supply chain", "agent skill"]
+    keywords: ["tool use attack", "tool-use attack", "tool abuse", "malicious tool", "tool vulnerability", "entity binding failure", "skill supply chain", "agent skill", "function calling attack", "API abuse"]
 
   - name: "backdoor"
     description: "后门与投毒攻击"
     description_en: "Backdoor & Poisoning Attacks"
-    keywords: ["backdoor", "trojan", "poisoning", "data poisoning", "sleeper agent", "hidden behaviour", "hidden behavior"]
+    keywords: ["backdoor", "trojan", "poisoning", "data poisoning", "sleeper agent", "hidden behaviour", "hidden behavior", "trigger backdoor"]
 
   - name: "adversarial-attack"
     description: "对抗攻击"
     description_en: "Adversarial Attacks"
-    keywords: ["adversarial attack", "adversarial example", "adversarial perturbation", "adversarial robustness"]
+    keywords: ["adversarial attack", "adversarial example", "adversarial perturbation", "adversarial robustness", "adversarial prompt"]
 
   - name: "privacy-leakage"
     description: "隐私泄露"
     description_en: "Privacy Leakage"
-    keywords: ["privacy", "privacy-preserving", "data leakage", "information leakage", "re-identification", "reidentification", "leakage"]
+    keywords: ["privacy", "privacy-preserving", "data leakage", "information leakage", "re-identification", "reidentification", "leakage", "model extraction", "model stealing", "membership inference", "training data extraction", "data extraction"]
 
   - name: "steganography"
     description: "隐写与隐蔽通信"
@@ -117,7 +231,7 @@ categories:
   - name: "misuse"
     description: "滥用与误用"
     description_en: "Misuse & Abuse"
-    keywords: ["misuse", "abuse", "harmful", "misuse potential", "dual-use", "weaponization"]
+    keywords: ["misuse", "abuse", "harmful", "misuse potential", "dual-use", "weaponization", "social engineering", "phishing", "fraud", "scam"]
 
   - name: "red-teaming"
     description: "红队测试"
@@ -132,12 +246,27 @@ categories:
   - name: "defense"
     description: "防御与防护方法"
     description_en: "Defense & Protection Methods"
-    keywords: ["defense", "defence", "defend", "guardrail", "guard rail", "guardrails", "firewall", "sandbox", "isolation", "access control", "containment", "monitoring", "detection"]
+    keywords: ["defense", "defence", "defend", "guardrail", "guard rail", "guardrails", "firewall", "sandbox", "isolation", "access control", "containment", "monitoring", "detection", "content filtering", "content filter", "anomaly detection", "intrusion detection"]
 
   - name: "alignment"
     description: "对齐与安全约束"
     description_en: "Alignment & Safety Constraints"
-    keywords: ["alignment", "value alignment", "safety alignment", "constitutional ai", "reinforcement learning from human feedback", "rlhf", "action alignment", "behavioral governance", "safety constraint", "reward hacking"]
+    keywords: ["alignment", "value alignment", "safety alignment", "constitutional ai", "reinforcement learning from human feedback", "rlhf", "action alignment", "behavioral governance", "safety constraint", "reward hacking", "specification gaming", "goal misgeneralization", "deceptive alignment", "corrigibility"]
+
+  - name: "robustness"
+    description: "鲁棒性与可靠性"
+    description_en: "Robustness & Reliability"
+    keywords: ["robustness", "robust", "reliability", "failure mode", "out-of-distribution", "distribution shift", "catastrophic failure"]
+
+  - name: "watermark"
+    description: "水印与溯源"
+    description_en: "Watermarking & Provenance"
+    keywords: ["watermark", "watermarking", "fingerprinting", "provenance", "attribution", "forensics"]
+
+  - name: "unlearning"
+    description: "机器遗忘"
+    description_en: "Machine Unlearning"
+    keywords: ["unlearning", "machine unlearning", "knowledge unlearning", "selective forgetting"]
 
   - name: "agent-safety"
     description: "Agent 安全框架"
@@ -147,7 +276,7 @@ categories:
   - name: "benchmark"
     description: "安全评测与基准"
     description_en: "Safety Benchmarks & Evaluation"
-    keywords: ["safety benchmark", "security benchmark", "safety evaluation", "adversarial benchmark", "robustness benchmark", "safety testbed", "red team benchmark", "jailbreak benchmark"]
+    keywords: ["safety benchmark", "security benchmark", "safety evaluation", "adversarial benchmark", "robustness benchmark", "safety testbed", "red team benchmark", "jailbreak benchmark", "safety dataset"]
 
   - name: "survey"
     description: "综述与系统化"
