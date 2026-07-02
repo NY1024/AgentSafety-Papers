@@ -17,7 +17,7 @@ def generate_readme(papers: List[Paper], config: Config) -> str:
     lines.append("")
     lines.append("**Daily Tracking of LLM Agent Security Papers on arXiv**")
     lines.append("")
-    lines.append("[![Auto Update](https://github.com/user/agentguard/actions/workflows/daily-update.yml/badge.svg)](https://github.com/user/agentguard/actions/workflows/daily-update.yml)")
+    lines.append("[![Auto Update](https://github.com/NY1024/AgentSafety-Papers/actions/workflows/daily-update.yml/badge.svg)](https://github.com/NY1024/AgentSafety-Papers/actions/workflows/daily-update.yml)")
     lines.append("[![Papers](https://img.shields.io/badge/Papers-{}-blue)](#)".format(len(papers)))
     lines.append("[![License](https://img.shields.io/badge/License-MIT-green)](#)")
     lines.append("")
@@ -83,6 +83,7 @@ def generate_readme(papers: List[Paper], config: Config) -> str:
                 lines.append(p.abstract)
                 lines.append("")
                 lines.append("</details>")
+                lines.append("")
             lines.append(f"- **链接 / Links**: [Abstract]({p.abs_url}) | [PDF]({p.pdf_url})")
             if p.has_code and p.code_url:
                 lines.append(f"- **代码 / Code**: [GitHub]({p.code_url})")
