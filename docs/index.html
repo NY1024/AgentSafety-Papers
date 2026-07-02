@@ -588,7 +588,7 @@ let searchTerm = '';
 let sortBy = 'newest';
 
 async function loadPapers() {
-    const res = await fetch('papers.json');
+    const res = await fetch('papers.json?v=' + Date.now());
     allPapers = await res.json();
     render();
 }
