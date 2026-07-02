@@ -269,7 +269,6 @@ def main():
     import shutil
     docs_dir = Path(__file__).parent / "docs"
     shutil.copy(config.storage.papers_file, docs_dir / "papers.json")
-    shutil.copy(config.storage.papers_file, docs_dir / "data" / "papers.json")
     log.info("✅ 已同步 papers.json 到 docs/ 目录")
 
     # 7. Git 提交推送（push 后 deploy-pages.yml 会自动触发 Pages 部署）
