@@ -118,8 +118,8 @@ def main():
     query = build_simple_query(config)
     log.info(f"🔍 使用简化查询")
 
-    # 3. 从start=2000开始抓取（跳过已有的2000篇）
-    START = 2000
+    # 3. 从start=4000开始抓取（跳过已有的4000篇）
+    START = 4000
     TOTAL = 2000  # 抓2000篇
     PAGE_SIZE = 100
     all_new_papers = []
@@ -178,6 +178,13 @@ def main():
     dates = sorted([p.published for p in all_papers])
     log.info(f"🎉 完成！本次新增 {len(fresh_papers)} 篇，总计 {len(all_papers)} 篇")
     log.info(f"📅 日期范围: {dates[0]} ~ {dates[-1]}")
+
+    # 8. 同步到 docs 目录（GitHub Pages）
+    import shutil
+    docs_dir = Path(__file__).parent / "docs"
+    shutil.copy(config.storage.papers_file, docs_dir / "papers.json")
+    shutil.copy(config.storage.papers_file, docs_dir / "data" / "papers.json")
+    log.info("✅ 已同步 papers.json 到 docs/ 目录")
 
 
 if __name__ == "__main__":
