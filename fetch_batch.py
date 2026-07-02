@@ -272,40 +272,19 @@ def main():
     shutil.copy(config.storage.papers_file, docs_dir / "data" / "papers.json")
     log.info("✅ 已同步 papers.json 到 docs/ 目录")
 
-    # 7. Git 提交推送
+    # 7. Git 提交推送（push 后 deploy-pages.yml 会自动触发 Pages 部署）
     import subprocess
     log.info("📤 提交并推送到 GitHub...")
     try:
         subprocess.run(["git", "add", "-A"], check=True, cwd=str(Path(__file__).parent))
-        commit_msg = f"feat: expanded keywords, batch fetch {len(all_new_papers)} papers (total {len(all_papers)})"
+        commit_msg = f"feat: batch fetch {len(all_new_papers)} papers (total {len(all_papers)})"
         subprocess.run(["git", "commit", "-m", commit_msg], check=True, cwd=str(Path(__file__).parent))
+        subprocess.run(["git", "pull", "--rebase", "origin", "main"], check=True, cwd=str(Path(__file__).parent))
         subprocess.run(["git", "push", "origin", "main"], check=True, cwd=str(Path(__file__).parent))
-        log.info("✅ 已推送到 GitHub")
+        log.info("✅ 已推送到 GitHub，Pages 将自动部署")
     except subprocess.CalledProcessError as e:
-        log.error(f"❌ Git 推送失败: {e}")
-        log.error("请手动执行 git push")
-
-    # 8. 触发 GitHub Actions 重新部署 Pages
-    log.info("🚀 触发 GitHub Pages 重新部署...")
-    try:
-        token = subprocess.check_output(
-            ["security", "find-internet-password", "-s", "github.com", "-w"],
-            stderr=subprocess.DEVNULL
-        ).decode().strip()
-        repo = "NY1024/AgentSafety-Papers"
-        resp = requests.post(
-            f"https://api.github.com/repos/{repo}/actions/workflows/daily-update.yml/dispatches",
-            headers={"Authorization": f"token {token}", "Accept": "application/vnd.github.v3+json"},
-            json={"ref": "main"},
-            timeout=10,
-        )
-        if resp.status_code == 204:
-            log.info("✅ 已触发 Pages 重新部署（1-2 分钟后生效）")
-        else:
-            log.warning(f"⚠️ 触发部署返回 HTTP {resp.status_code}")
-    except Exception as e:
-        log.warning(f"⚠️ 触发部署失败: {e}")
-        log.warning("Pages 将在下次每日自动更新时同步")
+        log.error(f"❌ Git 操作失败: {e}")
+        log.error("请手动执行: git pull --rebase origin main && git push origin main")
 
 
 if __name__ == "__main__":
