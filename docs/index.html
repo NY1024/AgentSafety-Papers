@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgentGuard 🛡️ | LLM Agent Security Papers</title>
+    <meta name="description" content="Daily Tracking of LLM Agent Security Papers on arXiv">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+    <style>
+        :root {
+            --bg: #0d1117;
+            --bg-card: #161b22;
+            --bg-hover: #1c2128;
+            --border: #30363d;
+            --text: #e6edf3;
+            --text-muted: #8b949e;
+            --accent: #58a6ff;
+            --accent-hover: #79c0ff;
+            --accent-bg: rgba(56, 139, 253, 0.15);
+            --green: #3fb950;
+            --purple: #bc8cff;
+            --orange: #d29922;
+            --red: #f85149;
+            --pink: #f778ba;
+            --sidebar-w: 260px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== Header ===== */
+        .header {
+            background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1a1f3a 100%);
+            border-bottom: 1px solid var(--border);
+            padding: 2rem 2rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%; right: -10%;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(56,139,253,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .header-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .header .subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-top: 0.3rem;
+        }
+
+        .header-badges {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .header-badges img { height: 20px; }
+
+        .header-stats {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .stat-item strong { color: var(--accent); font-size: 1.1rem; }
+
+        /* ===== Layout ===== */
+        .layout {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 1.5rem;
+            padding: 1.5rem 2rem;
+        }
+
+        /* ===== Sidebar ===== */
+        .sidebar {
+            width: var(--sidebar-w);
+            flex-shrink: 0;
+            position: sticky;
+            top: 1rem;
+            align-self: flex-start;
+            max-height: calc(100vh - 2rem);
+            overflow-y: auto;
+        }
+
+        .sidebar h3 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            padding-left: 0.5rem;
+        }
+
+        .cat-list { list-style: none; margin-bottom: 1rem; }
+
+        .cat-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.4rem 0.6rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            transition: all 0.15s;
+            margin-bottom: 2px;
+        }
+
+        .cat-item:hover { background: var(--bg-hover); color: var(--text); }
+
+        .cat-item.active {
+            background: var(--accent-bg);
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .cat-item .cat-name { display: flex; align-items: center; gap: 0.4rem; }
+
+        .cat-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .cat-count {
+            font-size: 0.75rem;
+            background: var(--border);
+            padding: 1px 7px;
+            border-radius: 10px;
+            min-width: 24px;
+            text-align: center;
+        }
+
+        .cat-item.active .cat-count { background: rgba(56,139,253,0.3); }
+
+        /* ===== Main Content ===== */
+        .main {
+            flex: 1;
+            min-width: 0;
+        }
+
+        /* ===== Search Bar ===== */
+        .search-bar {
+            display: flex;
+            gap: 0.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 0.6rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 0.95rem;
+            transition: border-color 0.15s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(56,139,253,0.15);
+        }
+
+        .search-input::placeholder { color: var(--text-muted); }
+
+        .sort-select {
+            padding: 0.6rem 0.8rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        /* ===== Results Info ===== */
+        .results-info {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* ===== Paper Card ===== */
+        .paper-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.2rem;
+            margin-bottom: 0.8rem;
+            transition: border-color 0.15s, transform 0.1s;
+        }
+
+        .paper-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-1px);
+        }
+
+        .paper-card .paper-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .paper-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .paper-title a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+
+        .paper-title a:hover { color: var(--accent-hover); }
+
+        .paper-cat-badge {
+            flex-shrink: 0;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            white-space: nowrap;
+        }
+
+        .paper-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .paper-meta .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .paper-abstract {
+            margin-top: 0.5rem;
+        }
+
+        .paper-abstract summary {
+            cursor: pointer;
+            font-size: 0.82rem;
+            color: var(--accent);
+            user-select: none;
+            padding: 0.2rem 0;
+        }
+
+        .paper-abstract summary:hover { color: var(--accent-hover); }
+
+        .paper-abstract[open] summary { margin-bottom: 0.4rem; }
+
+        .paper-abstract-content {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            padding: 0.5rem 0.8rem;
+            background: rgba(255,255,255,0.02);
+            border-left: 2px solid var(--border);
+            border-radius: 0 4px 4px 0;
+        }
+
+        .paper-links {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 0.6rem;
+            font-size: 0.82rem;
+        }
+
+        .paper-links a {
+            color: var(--accent);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.2rem;
+            transition: color 0.15s;
+        }
+
+        .paper-links a:hover { color: var(--accent-hover); text-decoration: underline; }
+
+        /* ===== Category Colors ===== */
+        .cat-jailbreak { background: rgba(248,81,73,0.15); color: var(--red); }
+        .cat-prompt-injection { background: rgba(247,120,186,0.15); color: var(--pink); }
+        .cat-memory-poisoning { background: rgba(210,153,34,0.15); color: var(--orange); }
+        .cat-tool-use-attack { background: rgba(188,140,255,0.15); color: var(--purple); }
+        .cat-backdoor { background: rgba(248,81,73,0.12); color: #ff7b72; }
+        .cat-adversarial-attack { background: rgba(210,153,34,0.12); color: #e3b341; }
+        .cat-privacy-leakage { background: rgba(188,140,255,0.12); color: #d2a8ff; }
+        .cat-steganography { background: rgba(139,148,158,0.15); color: #adb1b8; }
+        .cat-misuse { background: rgba(210,153,34,0.1); color: #dbab09; }
+        .cat-red-teaming { background: rgba(248,81,73,0.1); color: #ffa198; }
+        .cat-vulnerability { background: rgba(247,120,186,0.1); color: #ff9ecf; }
+        .cat-defense { background: rgba(63,185,80,0.15); color: var(--green); }
+        .cat-alignment { background: rgba(56,139,253,0.15); color: var(--accent); }
+        .cat-agent-safety { background: rgba(63,185,80,0.1); color: #56d364; }
+        .cat-benchmark { background: rgba(188,140,255,0.1); color: #bc8cff; }
+        .cat-survey { background: rgba(139,148,158,0.1); color: #b8c0c8; }
+        .cat-other { background: rgba(139,148,158,0.08); color: #6e7681; }
+
+        .dot-jailbreak { background: var(--red); }
+        .dot-prompt-injection { background: var(--pink); }
+        .dot-memory-poisoning { background: var(--orange); }
+        .dot-tool-use-attack { background: var(--purple); }
+        .dot-backdoor { background: #ff7b72; }
+        .dot-adversarial-attack { background: #e3b341; }
+        .dot-privacy-leakage { background: #d2a8ff; }
+        .dot-steganography { background: #adb1b8; }
+        .dot-misuse { background: #dbab09; }
+        .dot-red-teaming { background: #ffa198; }
+        .dot-vulnerability { background: #ff9ecf; }
+        .dot-defense { background: var(--green); }
+        .dot-alignment { background: var(--accent); }
+        .dot-agent-safety { background: #56d364; }
+        .dot-benchmark { background: #bc8cff; }
+        .dot-survey { background: #b8c0c8; }
+        .dot-other { background: #6e7681; }
+
+        /* ===== Loading ===== */
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+        }
+
+        .loading .spinner {
+            display: inline-block;
+            width: 32px; height: 32px;
+            border: 3px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ===== Footer ===== */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            border-top: 1px solid var(--border);
+            margin-top: 2rem;
+        }
+
+        .footer a { color: var(--accent); text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+
+        /* ===== Scrollbar ===== */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #484f58; }
+
+        /* ===== Mobile ===== */
+        .mobile-toggle {
+            display: none;
+            position: fixed;
+            bottom: 1rem; right: 1rem;
+            z-index: 100;
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+
+        @media (max-width: 900px) {
+            .sidebar {
+                position: fixed;
+                top: 0; left: 0;
+                width: 280px;
+                height: 100vh;
+                background: var(--bg);
+                border-right: 1px solid var(--border);
+                padding: 1rem;
+                z-index: 50;
+                transform: translateX(-100%);
+                transition: transform 0.2s;
+            }
+            .sidebar.open { transform: translateX(0); }
+            .mobile-toggle { display: block; }
+            .layout { padding: 1rem; }
+            .header { padding: 1.5rem 1rem 1rem; }
+        }
+
+        .overlay {
+            display: none;
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 40;
+        }
+        .overlay.show { display: block; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-inner">
+        <h1>AgentGuard 🛡️</h1>
+        <p class="subtitle">Daily Tracking of LLM Agent Security Papers on arXiv</p>
+        <div class="header-badges">
+            <img src="https://github.com/NY1024/AgentSafety-Papers/actions/workflows/daily-update.yml/badge.svg" alt="Auto Update">
+            <img src="https://img.shields.io/badge/License-MIT-green" alt="License">
+        </div>
+        <div class="header-stats" id="header-stats"></div>
+    </div>
+</div>
+
+<div class="layout">
+    <aside class="sidebar" id="sidebar">
+        <h3>📂 Categories</h3>
+        <ul class="cat-list" id="cat-list"></ul>
+    </aside>
+
+    <main class="main">
+        <div class="search-bar">
+            <input type="text" class="search-input" id="search" placeholder="🔍 Search by title, author, or keyword...">
+            <select class="sort-select" id="sort">
+                <option value="newest">Newest First</option>
+                <option value="oldest">Oldest First</option>
+            </select>
+        </div>
+        <div class="results-info" id="results-info"></div>
+        <div id="paper-list">
+            <div class="loading"><div class="spinner"></div><p style="margin-top:0.5rem">Loading papers...</p></div>
+        </div>
+    </main>
+</div>
+
+<button class="mobile-toggle" onclick="toggleSidebar()">☰</button>
+<div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+<div class="footer">
+    Generated by <a href="https://github.com/NY1024/AgentSafety-Papers" target="_blank">AgentGuard</a> ·
+    Data from <a href="https://arxiv.org" target="_blank">arXiv</a> ·
+    <span id="last-updated"></span>
+</div>
+
+<script>
+const CAT_META = {
+    'jailbreak':         { zh: '越狱攻击', en: 'Jailbreak Attacks' },
+    'prompt-injection':  { zh: '提示注入攻击', en: 'Prompt Injection Attacks' },
+    'memory-poisoning':  { zh: '记忆投毒与篡改', en: 'Memory Poisoning & Tampering' },
+    'tool-use-attack':   { zh: '工具使用攻击', en: 'Tool-Use Attacks' },
+    'backdoor':          { zh: '后门与投毒攻击', en: 'Backdoor & Poisoning Attacks' },
+    'adversarial-attack':{ zh: '对抗攻击', en: 'Adversarial Attacks' },
+    'privacy-leakage':   { zh: '隐私泄露', en: 'Privacy Leakage' },
+    'steganography':     { zh: '隐写与隐蔽通信', en: 'Steganography & Covert Communication' },
+    'misuse':            { zh: '滥用与误用', en: 'Misuse & Abuse' },
+    'red-teaming':       { zh: '红队测试', en: 'Red Teaming' },
+    'vulnerability':     { zh: '漏洞与攻击面', en: 'Vulnerabilities & Attack Surfaces' },
+    'defense':           { zh: '防御与防护方法', en: 'Defense & Protection Methods' },
+    'alignment':         { zh: '对齐与安全约束', en: 'Alignment & Safety Constraints' },
+    'agent-safety':      { zh: 'Agent 安全框架', en: 'Agent Safety Frameworks' },
+    'benchmark':         { zh: '安全评测与基准', en: 'Safety Benchmarks & Evaluation' },
+    'survey':            { zh: '综述与系统化', en: 'Surveys & Systematization' },
+    'other':             { zh: '其他安全相关', en: 'Other Security-Related' }
+};
+
+let allPapers = [];
+let activeCategory = 'all';
+let searchTerm = '';
+let sortBy = 'newest';
+
+async function loadPapers() {
+    const res = await fetch('papers.json');
+    allPapers = await res.json();
+    render();
+}
+
+function render() {
+    renderStats();
+    renderSidebar();
+    renderPapers();
+}
+
+function renderStats() {
+    const total = allPapers.length;
+    const cats = new Set(allPapers.map(p => p.category || 'other')).size;
+    const dates = allPapers.map(p => p.published).sort();
+    const latest = dates.length ? dates[dates.length - 1] : '-';
+    const earliest = dates.length ? dates[0] : '-';
+
+    document.getElementById('header-stats').innerHTML = `
+        <div class="stat-item">📄 <strong>${total}</strong> Papers</div>
+        <div class="stat-item">📂 <strong>${cats}</strong> Categories</div>
+        <div class="stat-item">📅 Latest: <strong>${latest}</strong></div>
+    `;
+    document.getElementById('last-updated').textContent = `Last updated: ${new Date().toISOString().slice(0,16).replace('T',' ')}`;
+}
+
+function renderSidebar() {
+    const counts = {};
+    allPapers.forEach(p => {
+        const c = p.category || 'other';
+        counts[c] = (counts[c] || 0) + 1;
+    });
+
+    const sortedCats = Object.keys(CAT_META).filter(c => counts[c] > 0);
+
+    let html = `<li class="cat-item ${activeCategory === 'all' ? 'active' : ''}" onclick="setCategory('all')">
+        <span class="cat-name">📋 All Papers</span>
+        <span class="cat-count">${allPapers.length}</span>
+    </li>`;
+
+    sortedCats.forEach(cat => {
+        const meta = CAT_META[cat];
+        html += `<li class="cat-item ${activeCategory === cat ? 'active' : ''}" onclick="setCategory('${cat}')">
+            <span class="cat-name">
+                <span class="cat-dot dot-${cat}"></span>
+                ${cat}
+            </span>
+            <span class="cat-count">${counts[cat]}</span>
+        </li>`;
+    });
+
+    document.getElementById('cat-list').innerHTML = html;
+}
+
+function renderPapers() {
+    let filtered = allPapers;
+
+    if (activeCategory !== 'all') {
+        filtered = filtered.filter(p => (p.category || 'other') === activeCategory);
+    }
+
+    if (searchTerm) {
+        const term = searchTerm.toLowerCase();
+        filtered = filtered.filter(p =>
+            (p.title && p.title.toLowerCase().includes(term)) ||
+            (p.authors && p.authors.join(' ').toLowerCase().includes(term)) ||
+            (p.abstract && p.abstract.toLowerCase().includes(term))
+        );
+    }
+
+    filtered.sort((a, b) => {
+        if (sortBy === 'newest') return b.published.localeCompare(a.published);
+        return a.published.localeCompare(b.published);
+    });
+
+    document.getElementById('results-info').textContent =
+        `${filtered.length} paper${filtered.length !== 1 ? 's' : ''}${activeCategory !== 'all' ? ' in ' + activeCategory : ''}${searchTerm ? ' matching "' + searchTerm + '"' : ''}`;
+
+    if (filtered.length === 0) {
+        document.getElementById('paper-list').innerHTML =
+            '<div class="loading"><p>No papers found. Try a different search or category.</p></div>';
+        return;
+    }
+
+    const html = filtered.map(p => {
+        const cat = p.category || 'other';
+        const meta = CAT_META[cat] || CAT_META['other'];
+        const authors = p.authors ? p.authors.slice(0, 4).join(', ') + (p.authors.length > 4 ? ' et al.' : '') : '';
+        const abstractHtml = p.abstract
+            ? `<details class="paper-abstract"><summary>📝 Abstract</summary><div class="paper-abstract-content">${escapeHtml(p.abstract)}</div></details>`
+            : '';
+
+        return `<div class="paper-card">
+            <div class="paper-header">
+                <div class="paper-title"><a href="${p.abs_url}" target="_blank">${escapeHtml(p.title)}</a></div>
+                <span class="paper-cat-badge cat-${cat}">${cat}</span>
+            </div>
+            <div class="paper-meta">
+                <span class="meta-item">👤 ${escapeHtml(authors)}</span>
+                <span class="meta-item">📅 ${p.published}</span>
+                ${p.primary_category ? `<span class="meta-item">🏷️ ${p.primary_category}</span>` : ''}
+            </div>
+            ${abstractHtml}
+            <div class="paper-links">
+                <a href="${p.abs_url}" target="_blank">📄 Abstract</a>
+                <a href="${p.pdf_url}" target="_blank">📥 PDF</a>
+                ${p.has_code && p.code_url ? `<a href="${p.code_url}" target="_blank">💻 Code</a>` : ''}
+            </div>
+        </div>`;
+    }).join('');
+
+    document.getElementById('paper-list').innerHTML = html;
+}
+
+function setCategory(cat) {
+    activeCategory = cat;
+    render();
+    if (window.innerWidth <= 900) toggleSidebar();
+}
+
+function escapeHtml(str) {
+    if (!str) return '';
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+
+function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+    document.getElementById('overlay').classList.toggle('show');
+}
+
+document.getElementById('search').addEventListener('input', e => {
+    searchTerm = e.target.value;
+    renderPapers();
+});
+
+document.getElementById('sort').addEventListener('change', e => {
+    sortBy = e.target.value;
+    renderPapers();
+});
+
+loadPapers();
+</script>
+
+</body>
+</html>

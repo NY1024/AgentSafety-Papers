@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      pages: write
+      id-token: write
 
     steps:
       - name: Checkout
@@ -27,6 +29,9 @@ jobs:
       - name: Fetch and update papers
         run: python main.py
 
+      - name: Sync papers.json to docs
+        run: cp data/papers.json docs/papers.json
+
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
@@ -34,3 +39,14 @@ jobs:
           git add -A
           git diff --staged --quiet || git commit -m "📅 Daily update: $(date -u +%Y-%m-%d)"
           git push
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
