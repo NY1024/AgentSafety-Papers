@@ -118,9 +118,9 @@ def main():
     query = build_simple_query(config)
     log.info(f"🔍 使用简化查询")
 
-    # 3. 从start=4000开始抓取（跳过已有的4000篇）
-    START = 4000
-    TOTAL = 2000  # 抓2000篇
+    # 3. 动态计算起始位置（跳过已有论文数）
+    START = len(existing_papers)
+    TOTAL = 2000  # 每次抓2000篇
     PAGE_SIZE = 100
     all_new_papers = []
 
@@ -185,6 +185,41 @@ def main():
     shutil.copy(config.storage.papers_file, docs_dir / "papers.json")
     shutil.copy(config.storage.papers_file, docs_dir / "data" / "papers.json")
     log.info("✅ 已同步 papers.json 到 docs/ 目录")
+
+    # 9. Git 提交推送（自动同步 README + 数据到 GitHub）
+    import subprocess
+    log.info("📤 提交并推送到 GitHub...")
+    try:
+        subprocess.run(["git", "add", "-A"], check=True, cwd=str(Path(__file__).parent))
+        commit_msg = f"feat: batch fetch {len(fresh_papers)} papers (total {len(all_papers)}, {dates[0]} ~ {dates[-1]})"
+        subprocess.run(["git", "commit", "-m", commit_msg], check=True, cwd=str(Path(__file__).parent))
+        subprocess.run(["git", "push", "origin", "main"], check=True, cwd=str(Path(__file__).parent))
+        log.info("✅ 已推送到 GitHub")
+    except subprocess.CalledProcessError as e:
+        log.error(f"❌ Git 推送失败: {e}")
+        log.error("请手动执行 git push")
+
+    # 10. 触发 GitHub Actions 重新部署 Pages
+    log.info("🚀 触发 GitHub Pages 重新部署...")
+    try:
+        token = subprocess.check_output(
+            ["security", "find-internet-password", "-s", "github.com", "-w"],
+            stderr=subprocess.DEVNULL
+        ).decode().strip()
+        repo = "NY1024/AgentSafety-Papers"
+        resp = requests.post(
+            f"https://api.github.com/repos/{repo}/actions/workflows/daily-update.yml/dispatches",
+            headers={"Authorization": f"token {token}", "Accept": "application/vnd.github.v3+json"},
+            json={"ref": "main"},
+            timeout=10,
+        )
+        if resp.status_code == 204:
+            log.info("✅ 已触发 Pages 重新部署（1-2 分钟后生效）")
+        else:
+            log.warning(f"⚠️ 触发部署返回 HTTP {resp.status_code}")
+    except Exception as e:
+        log.warning(f"⚠️ 触发部署失败: {e}")
+        log.warning("Pages 将在下次每日自动更新时同步")
 
 
 if __name__ == "__main__":
