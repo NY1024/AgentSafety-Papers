@@ -30,7 +30,9 @@ jobs:
         run: python main.py
 
       - name: Sync papers.json to docs
-        run: cp data/papers.json docs/papers.json
+        run: |
+          cp data/papers.json docs/papers.json
+          cp data/papers.json docs/data/papers.json
 
       - name: Commit and push
         run: |
