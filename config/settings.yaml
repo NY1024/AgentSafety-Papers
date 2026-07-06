@@ -5,7 +5,7 @@ arxiv:
   # 排序方式: SubmittedDate / Relevance / LastUpdatedDate
   sort_by: "SubmittedDate"
   # 只爬取最近 N 天的论文（0 表示不限制）
-  days_back: 1
+  days_back: 3
 
 # 数据存储
 storage:
