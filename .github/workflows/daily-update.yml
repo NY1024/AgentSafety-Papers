@@ -11,8 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pages: write
-      id-token: write
 
     steps:
       - name: Checkout
@@ -42,6 +40,22 @@ jobs:
           git pull --rebase origin main
           git push origin main
 
+  deploy:
+    needs: update
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
@@ -50,18 +64,6 @@ jobs:
         with:
           path: docs
 
-      - name: Deploy to GitHub Pages (attempt 1)
-        id: deploy1
-        uses: actions/deploy-pages@v4
-        continue-on-error: true
-
-      - name: Deploy to GitHub Pages (attempt 2)
-        id: deploy2
-        if: steps.deploy1.outcome == 'failure'
-        uses: actions/deploy-pages@v4
-        continue-on-error: true
-
-      - name: Deploy to GitHub Pages (attempt 3)
-        id: deploy3
-        if: steps.deploy2.outcome == 'failure'
+      - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
