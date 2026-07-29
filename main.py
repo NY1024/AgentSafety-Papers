@@ -43,7 +43,7 @@ def main():
         new_papers = fetch_papers(config)
     except Exception as e:
         log.error(f"❌ arXiv 爬取失败: {e}")
-        return
+        sys.exit(1)
 
     log.info(f"📄 arXiv 返回 {len(new_papers)} 篇论文")
 

@@ -118,47 +118,74 @@ def fetch_papers(config: Config) -> List[Paper]:
     client = arxiv.Client()
     all_papers: List[Paper] = []
     seen_ids = set()
+    failed_groups: List[str] = []
+    max_retries = 3
 
     for group_name, query in queries:
         log.info(f"  📄 查询组 [{group_name}] (query length: {len(query)} chars)")
-        try:
-            search = arxiv.Search(
-                query=query,
-                max_results=per_query_max,
-                sort_by=sort_by,
-            )
+        succeeded = False
+        last_error = None
 
-            group_count = 0
-            for result in client.results(search):
-                published = result.published
-                if cutoff_date and published.replace(tzinfo=None) < cutoff_date:
-                    continue
-
-                arxiv_id = result.entry_id.split("/abs/")[-1]
-                if arxiv_id in seen_ids:
-                    continue
-                seen_ids.add(arxiv_id)
-
-                paper = Paper(
-                    arxiv_id=arxiv_id,
-                    title=result.title.replace("\n", " ").strip(),
-                    authors=[a.name for a in result.authors],
-                    abstract=result.summary.replace("\n", " ").strip(),
-                    published=published.strftime("%Y-%m-%d"),
-                    updated=result.updated.strftime("%Y-%m-%d"),
-                    primary_category=result.primary_category,
-                    pdf_url=result.pdf_url,
-                    abs_url=result.entry_id,
+        for attempt in range(1, max_retries + 1):
+            try:
+                search = arxiv.Search(
+                    query=query,
+                    max_results=per_query_max,
+                    sort_by=sort_by,
                 )
-                all_papers.append(paper)
-                group_count += 1
 
-            log.info(f"  ✅ [{group_name}] 获取 {group_count} 篇新论文")
-        except Exception as e:
-            log.warning(f"  ⚠️ [{group_name}] 查询失败: {e}")
+                group_count = 0
+                for result in client.results(search):
+                    published = result.published
+                    if cutoff_date and published.replace(tzinfo=None) < cutoff_date:
+                        continue
+
+                    arxiv_id = result.entry_id.split("/abs/")[-1]
+                    if arxiv_id in seen_ids:
+                        continue
+                    seen_ids.add(arxiv_id)
+
+                    paper = Paper(
+                        arxiv_id=arxiv_id,
+                        title=result.title.replace("\n", " ").strip(),
+                        authors=[a.name for a in result.authors],
+                        abstract=result.summary.replace("\n", " ").strip(),
+                        published=published.strftime("%Y-%m-%d"),
+                        updated=result.updated.strftime("%Y-%m-%d"),
+                        primary_category=result.primary_category,
+                        pdf_url=result.pdf_url,
+                        abs_url=result.entry_id,
+                    )
+                    all_papers.append(paper)
+                    group_count += 1
+
+                log.info(f"  ✅ [{group_name}] 获取 {group_count} 篇新论文")
+                succeeded = True
+                break
+            except Exception as e:
+                last_error = e
+                if attempt < max_retries:
+                    wait = 5 * attempt
+                    log.warning(f"  ⚠️ [{group_name}] 第 {attempt} 次失败: {e}，{wait}s 后重试...")
+                    time.sleep(wait)
+                else:
+                    log.error(f"  ❌ [{group_name}] {max_retries} 次重试均失败: {e}")
+
+        if not succeeded:
+            failed_groups.append(group_name)
 
         # arXiv 限速：每组查询间隔 3 秒
         time.sleep(3)
+
+    # 所有查询组都失败时抛出异常，避免静默返回空列表导致 CI 误判为成功
+    if len(failed_groups) == len(queries):
+        raise RuntimeError(
+            f"所有 {len(queries)} 组 arXiv 查询均失败，无法获取论文数据。"
+            f"失败组: {', '.join(failed_groups)}。最后错误: {last_error}"
+        )
+
+    if failed_groups:
+        log.warning(f"⚠️ {len(failed_groups)}/{len(queries)} 组查询失败: {', '.join(failed_groups)}")
 
     log.info(f"📊 多组查询完成，共获取 {len(all_papers)} 篇去重论文")
     return all_papers
