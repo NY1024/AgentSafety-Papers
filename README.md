@@ -5,7 +5,7 @@
 **Daily Tracking of LLM Agent Security Papers on arXiv**
 
 [![Auto Update](https://github.com/NY1024/AgentSafety-Papers/actions/workflows/daily-update.yml/badge.svg)](https://github.com/NY1024/AgentSafety-Papers/actions/workflows/daily-update.yml)
-[![Papers](https://img.shields.io/badge/Papers-21374-blue)](#)
+[![Papers](https://img.shields.io/badge/Papers-21376-blue)](#)
 [![License](https://img.shields.io/badge/License-MIT-green)](#)
 
 </div>
@@ -18,9 +18,9 @@
 
 *Automatically tracking the latest LLM Agent security papers on arXiv, updated daily with keyword-based classification.*
 
-**最近更新 / Last Updated**: 2026-07-30 12:18 ｜ **论文总数 / Total Papers**: 21374（近 30 天 / Recent 30 days: 2242）
+**最近更新 / Last Updated**: 2026-07-30 08:15 ｜ **论文总数 / Total Papers**: 21376（近 30 天 / Recent 30 days: 2244）
 
-🌐 **[GitHub Pages](https://ny1024.github.io/AgentSafety-Papers/)** — 查看全部 21374 篇论文（含摘要、分类筛选、搜索）/ View all 21374 papers with abstracts, filters & search
+🌐 **[GitHub Pages](https://ny1024.github.io/AgentSafety-Papers/)** — 查看全部 21376 篇论文（含摘要、分类筛选、搜索）/ View all 21376 papers with abstracts, filters & search
 
 ## 📑 分类导航 / Category Navigation
 
@@ -34,7 +34,7 @@
 - **[steganography](#-steganography)** — 隐写与隐蔽通信 / Steganography & Covert Communication — 53
 - **[misuse](#-misuse)** — 滥用与误用 / Misuse & Abuse — 828
 - **[red-teaming](#-red-teaming)** — 红队测试 / Red Teaming — 109
-- **[vulnerability](#-vulnerability)** — 漏洞与攻击面 / Vulnerabilities & Attack Surfaces — 2472
+- **[vulnerability](#-vulnerability)** — 漏洞与攻击面 / Vulnerabilities & Attack Surfaces — 2474
 - **[defense](#-defense)** — 防御与防护方法 / Defense & Protection Methods — 2132
 - **[alignment](#-alignment)** — 对齐与安全约束 / Alignment & Safety Constraints — 1960
 - **[robustness](#-robustness)** — 鲁棒性与可靠性 / Robustness & Reliability — 1854
@@ -47,9 +47,9 @@
 
 ## 📄 近期论文 / Recent Papers (Last 30 Days)
 
-> 仅展示最近 30 天中最新的 500 篇论文（含日期、作者、摘要）。近 30 天共 2242 篇，完整 21374 篇论文列表请访问 [GitHub Pages](https://ny1024.github.io/AgentSafety-Papers/)
+> 仅展示最近 30 天中最新的 500 篇论文（含日期、作者、摘要）。近 30 天共 2244 篇，完整 21376 篇论文列表请访问 [GitHub Pages](https://ny1024.github.io/AgentSafety-Papers/)
 
-> Showing the latest 500 of 2242 papers from the last 30 days (with date, authors & abstract). For the full list of 21374 papers, visit [GitHub Pages](https://ny1024.github.io/AgentSafety-Papers/)
+> Showing the latest 500 of 2244 papers from the last 30 days (with date, authors & abstract). For the full list of 21376 papers, visit [GitHub Pages](https://ny1024.github.io/AgentSafety-Papers/)
 
 ### 📂 jailbreak
 *越狱攻击 / Jailbreak Attacks* — 9 papers
@@ -422,7 +422,7 @@
 
 
 ### 📂 vulnerability
-*漏洞与攻击面 / Vulnerabilities & Attack Surfaces* — 45 papers
+*漏洞与攻击面 / Vulnerabilities & Attack Surfaces* — 47 papers
 
 - **2026-07-29** — Philippe Baumstimler, Jean-Mathieu Gagnon, Sébastien Gagné et al. — [Step-Attention Refinement of DINOv3 Features for Efficient Anterior Eye Segmentation](http://arxiv.org/abs/2607.27087v1)
   <details><summary>📄 Abstract</summary>
@@ -542,6 +542,16 @@
 - **2026-07-28** — Zheshun Wu, Renjie Zheng, Jinhang Zuo et al. — [A Unified Algorithmic Framework for Hybrid Reinforcement Learning in Tabular MDPs with Shifted Transition Dynamics](http://arxiv.org/abs/2607.25207v1)
   <details><summary>📄 Abstract</summary>
   This paper investigates a hybrid reinforcement learning setting in tabular Markov Decision Processes (MDPs), where an agent aims to learn an optimal policy by combining online interactions with a target environment and offline data from a source environment. A central challenge is that offline data may be collected from outdated environments with shifted transition dynamics, making naive integration of historical data ineffective. To address this, we propose a unified algorithmic framework featu...
+  </details>
+
+- **2026-07-27** — Angelo Nardone, Paolo Ferragina — [LLM-based Source Code Compression via Thresholded Symbol Ranking](http://arxiv.org/abs/2607.24192v2)
+  <details><summary>📄 Abstract</summary>
+  We study the problem of lossless compression of source code, motivated by the storage demands of large-scale software archives, such as Software Heritage (https://www.softwareheritage.org/). General-purpose compressors (e.g., zstd, bzip2) offer a good trade-off between compression ratio and speed, but fail to exploit all special regularities inherent in source code. Recent approaches leverage Large Language Models (LLMs) within Shannon's symbol-ranking framework, relying on a scheme in which the...
+  </details>
+
+- **2026-07-27** — Yang Li, Hai Liu, Dian Shao et al. — [Agent-UCT: Upper Confidence Bounds Applied to Trees for Agentic Workflow Optimization with Cost-Awareness](http://arxiv.org/abs/2607.24162v2)
+  <details><summary>📄 Abstract</summary>
+  Optimizing agentic workflows, such as retrieval-augmented generation (RAG) pipelines, requires navigating a combinatorial space of discrete component choices under tight evaluation budgets. Existing approaches - heuristic search, black-box optimization, and standard tree search methods - do not explicitly exploit the compositional structure of these workflows, leading to redundant computation and inefficient budget allocation. We introduce Agent-UCT (Agent-based Cost-Aware Upper Confidence Bound...
   </details>
 
 - **2026-07-27** — Harrison J. Goldwyn, Graham Johnson, Christopher Ibarra et al. — [Beyond the Post Hoc User Study: Modeling Visual Decision-Making with Active Inference](http://arxiv.org/abs/2607.25131v1)
@@ -990,7 +1000,7 @@
 
 
 ### 📂 alignment
-*对齐与安全约束 / Alignment & Safety Constraints* — 70 papers
+*对齐与安全约束 / Alignment & Safety Constraints* — 69 papers
 
 - **2026-07-29** — Roshan Kenia, Stephanie L McNamara, William Lotter — [Anatomy Contextualized Adaption of CT Foundation Models](http://arxiv.org/abs/2607.27154v1)
   <details><summary>📄 Abstract</summary>
@@ -1335,11 +1345,6 @@
 - **2026-07-26** — Xianghao Jiao, Ruoyu Chen, Wei Wang et al. — [Consistent Evidence, Robust Recognition: Faithful Attribution Regularization under Geometric Transformations](http://arxiv.org/abs/2607.23835v1)
   <details><summary>📄 Abstract</summary>
   Attribution methods are widely used to characterize the evidence underlying model predictions, yet their potential to improve model behavior remains underexplored. Attribution inconsistency under label-preserving geometric transformations may indicate transformation-sensitive evidence reliance, motivating attribution regularization. However, such supervision is valid only when attribution faithfully reflects the evidence driving predictions. Existing self-supervised methods typically align gradi...
-  </details>
-
-- **2026-07-26** — Chenghao Wu, Kesha Ou, Xiaolei Wang et al. — [ClawRec: A Claw-Native Recommender System](http://arxiv.org/abs/2607.23779v1)
-  <details><summary>📄 Abstract</summary>
-  Recommender systems have become integral to navigating the modern digital ecosystem. Yet most deployed systems remain confined within single-platform boundaries, observing localized interaction traces and ranking items from isolated candidate spaces. This design is poorly suited to real-world tasks that unfold through searches, content consumption, and comparisons across multiple information sources. Claw-style personal agents, with persistent access to authorized cross-platform context, create ...
   </details>
 
 
@@ -1901,7 +1906,7 @@
 
 
 ### 📂 other
-*其他安全相关 / Other Security-Related* — 143 papers
+*其他安全相关 / Other Security-Related* — 142 papers
 
 - **2026-07-29** — Jinkun Zhao, Kui Zhang, Wenjun Wu — [TPCD: Tone-Pressure Contrastive Decoding and the Label-Free Gating Bottleneck in Vision-Language Models](http://arxiv.org/abs/2607.26536v1)
   <details><summary>📄 Abstract</summary>
@@ -2613,11 +2618,6 @@
   In this work, we introduce Indic DiarBench, a speaker diarization and ASR benchmark dataset spanning all 22 scheduled languages of India. This corpus comprises approximately 108 hours of natural multi-speaker audio from near-field meetings, far-field recordings, and in-the-wild audios. All annotations are human-corrected with time-aligned speaker attributed transcriptions. The dataset captures conversational nuance prevalent in Indian speech, such as English code-mixing, dialectal variation, and...
   </details>
 
-- **2026-07-26** — NeoteAI Team, Fudan TEAI Team — [$N_0$-TWAM: Scaling Tactile-Native World-Action Model for Contact-Rich Manipulation](http://arxiv.org/abs/2607.23783v1)
-  <details><summary>📄 Abstract</summary>
-  We present $N_0$-TWAM, a tactile-native world-action model for contact-rich manipulation that predicts both future vision and future contact. To our knowledge, it is the first tactile world-action model trained at large scale, and it shows strong capability on contact-rich tasks. We pre-train $N_0$-TWAM at large scale with visuo-tactile joint training over tactile-rich demonstrations spanning six embodiments and 450 tasks. We use NeoForce, a unified force-based tactile representation, to form a ...
-  </details>
-
 
 ## 📊 统计 / Statistics
 
@@ -2633,7 +2633,7 @@
 | steganography | 53 |
 | misuse | 828 |
 | red-teaming | 109 |
-| vulnerability | 2472 |
+| vulnerability | 2474 |
 | defense | 2132 |
 | alignment | 1960 |
 | robustness | 1854 |
@@ -2646,6 +2646,6 @@
 
 ---
 
-📚 **全部 21374 篇论文**（2022 至今）请访问 [GitHub Pages](https://ny1024.github.io/AgentSafety-Papers/) 查看完整列表、搜索与筛选。
+📚 **全部 21376 篇论文**（2022 至今）请访问 [GitHub Pages](https://ny1024.github.io/AgentSafety-Papers/) 查看完整列表、搜索与筛选。
 
-*Generated by AgentGuard at 2026-07-30 12:18:25*
+*Generated by AgentGuard at 2026-07-30 08:15:18*
