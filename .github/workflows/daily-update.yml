@@ -2,8 +2,9 @@ name: Daily Update
 
 on:
   schedule:
-    # 每天 UTC 0:00 运行（北京时间 8:00）
-    - cron: '0 0 * * *'
+    # 每 6 小时运行一次（UTC 0/6/12/18，北京时间 8/14/20/次日2点）
+    # 多频次确保 arXiv API 限速时当天能补上
+    - cron: '0 0,6,12,18 * * *'
   workflow_dispatch: # 支持手动触发
 
 jobs:
@@ -25,7 +26,13 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Fetch and update papers
-        run: python main.py
+        id: fetch
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 20
+          max_attempts: 3
+          retry_wait_seconds: 300
+          command: python main.py
 
       - name: Sync papers.json to docs
         run: |

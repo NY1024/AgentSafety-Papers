@@ -39,11 +39,14 @@ def main():
 
     # 3. 爬取新论文
     log.info("🔍 开始从 arXiv 爬取论文...")
+    new_papers = []
+    fetch_ok = False
     try:
         new_papers = fetch_papers(config)
+        fetch_ok = True
     except Exception as e:
         log.error(f"❌ arXiv 爬取失败: {e}")
-        sys.exit(1)
+        log.warning("⚠️ 跳过本次数据更新，使用已有数据生成 README（CI 不会阻塞部署）")
 
     log.info(f"📄 arXiv 返回 {len(new_papers)} 篇论文")
 
@@ -69,17 +72,21 @@ def main():
     log.info(f"💾 论文数据已保存 ({len(all_papers)} 篇)")
 
     # 更新 seen_ids
-    for p in fresh_papers:
-        seen_ids.add(p.arxiv_id)
-    save_seen_ids(seen_ids, config)
+    if fetch_ok:
+        for p in fresh_papers:
+            seen_ids.add(p.arxiv_id)
+        save_seen_ids(seen_ids, config)
 
     # 7. 生成 README
     log.info("📝 生成 README.md...")
-    readme_content = generate_readme(all_papers, config)
+    readme_content = generate_readme(all_papers, config, fetch_ok=fetch_ok)
     save_readme(readme_content, config)
     log.info(f"✅ README.md 已生成")
 
-    log.info(f"🎉 完成！本次新增 {len(fresh_papers)} 篇，总计 {len(all_papers)} 篇论文")
+    if fetch_ok:
+        log.info(f"🎉 完成！本次新增 {len(fresh_papers)} 篇，总计 {len(all_papers)} 篇论文")
+    else:
+        log.warning(f"⚠️ 本次跳过爬取，使用已有 {len(all_papers)} 篇论文生成 README，等待下次 CI 重试")
 
 
 if __name__ == "__main__":
