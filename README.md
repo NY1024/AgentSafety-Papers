@@ -5,7 +5,7 @@
 **Daily Tracking of LLM Agent Security Papers on arXiv**
 
 [![Auto Update](https://github.com/NY1024/AgentSafety-Papers/actions/workflows/daily-update.yml/badge.svg)](https://github.com/NY1024/AgentSafety-Papers/actions/workflows/daily-update.yml)
-[![Papers](https://img.shields.io/badge/Papers-27822-blue)](#)
+[![Papers](https://img.shields.io/badge/Papers-27830-blue)](#)
 [![License](https://img.shields.io/badge/License-MIT-green)](#)
 
 </div>
@@ -18,9 +18,9 @@
 
 *Automatically tracking the latest LLM Agent security papers on arXiv, updated daily with keyword-based classification.*
 
-**最近更新 / Last Updated**: 2026-09-16 03:04 ｜ **论文总数 / Total Papers**: 27822（近 30 天 / Recent 30 days: 3921）
+**最近更新 / Last Updated**: 2026-09-16 10:50 ｜ **论文总数 / Total Papers**: 27830（近 30 天 / Recent 30 days: 3929）
 
-🌐 **[GitHub Pages](https://ny1024.github.io/AgentSafety-Papers/)** — 查看全部 27822 篇论文（含摘要、分类筛选、搜索）/ View all 27822 papers with abstracts, filters & search
+🌐 **[GitHub Pages](https://ny1024.github.io/AgentSafety-Papers/)** — 查看全部 27830 篇论文（含摘要、分类筛选、搜索）/ View all 27830 papers with abstracts, filters & search
 
 ## 📑 分类导航 / Category Navigation
 
@@ -35,7 +35,7 @@
 - **[misuse](#-misuse)** — 滥用与误用 / Misuse & Abuse — 1015
 - **[red-teaming](#-red-teaming)** — 红队测试 / Red Teaming — 125
 - **[vulnerability](#-vulnerability)** — 漏洞与攻击面 / Vulnerabilities & Attack Surfaces — 3086
-- **[defense](#-defense)** — 防御与防护方法 / Defense & Protection Methods — 2893
+- **[defense](#-defense)** — 防御与防护方法 / Defense & Protection Methods — 2895
 - **[alignment](#-alignment)** — 对齐与安全约束 / Alignment & Safety Constraints — 2697
 - **[robustness](#-robustness)** — 鲁棒性与可靠性 / Robustness & Reliability — 2811
 - **[watermark](#-watermark)** — 水印与溯源 / Watermarking & Provenance — 432
@@ -43,13 +43,13 @@
 - **[agent-safety](#-agent-safety)** — Agent 安全框架 / Agent Safety Frameworks — 54
 - **[benchmark](#-benchmark)** — 安全评测与基准 / Safety Benchmarks & Evaluation — 65
 - **[survey](#-survey)** — 综述与系统化 / Surveys & Systematization — 346
-- **[other](#-other)** — 其他安全相关 / Other Security-Related — 7639
+- **[other](#-other)** — 其他安全相关 / Other Security-Related — 7645
 
 ## 📄 近期论文 / Recent Papers (Last 30 Days)
 
-> 仅展示最近 30 天中最新的 500 篇论文（含日期、作者、摘要）。近 30 天共 3921 篇，完整 27822 篇论文列表请访问 [GitHub Pages](https://ny1024.github.io/AgentSafety-Papers/)
+> 仅展示最近 30 天中最新的 500 篇论文（含日期、作者、摘要）。近 30 天共 3929 篇，完整 27830 篇论文列表请访问 [GitHub Pages](https://ny1024.github.io/AgentSafety-Papers/)
 
-> Showing the latest 500 of 3921 papers from the last 30 days (with date, authors & abstract). For the full list of 27822 papers, visit [GitHub Pages](https://ny1024.github.io/AgentSafety-Papers/)
+> Showing the latest 500 of 3929 papers from the last 30 days (with date, authors & abstract). For the full list of 27830 papers, visit [GitHub Pages](https://ny1024.github.io/AgentSafety-Papers/)
 
 ### 📂 jailbreak
 *越狱攻击 / Jailbreak Attacks* — 3 papers
@@ -192,7 +192,7 @@
 
 
 ### 📂 privacy-leakage
-*隐私泄露 / Privacy Leakage* — 35 papers
+*隐私泄露 / Privacy Leakage* — 34 papers
 
 - **2026-09-15** — Qiangju Chen, Yang Xiao — [Beyond the Name: Demographic Leakage in De-Identified Résumés and Evaluation Artifacts in LLM Bias Audits](http://arxiv.org/abs/2609.16501v1)
   <details><summary>📄 Abstract</summary>
@@ -364,14 +364,9 @@
   Membership inference attacks (MIAs) try to determine whether a specific record was used to train a model, a privacy risk that matters in natural language processing (NLP), where training data can contain sensitive user text. This paper presents a controlled benchmark of membership inference vulnerability for text classification on the GLUE SST-2 sentiment dataset. A TF-IDF + Logistic Regression pipeline and a fine-tuned DistilBERT classifier are compared under a loss-threshold MIA, with utility ...
   </details>
 
-- **2026-09-10** — Atsutoshi Kumagai, Tomoharu Iwata, Hiroshi Takahashi et al. — [AUC Maximization from Biased Positive-unlabeled Data with Confidence](http://arxiv.org/abs/2609.10928v1)
-  <details><summary>📄 Abstract</summary>
-  Maximizing the area under the receiver operating characteristic curve (AUC) is a standard approach to imbalanced binary classification. Although positive and negative data are required for maximizing the AUC, negative data are often difficult to collect in some real-world applications due to privacy concerns or the need for specialized expertise to annotate them. Thus, AUC maximization from positive and unlabeled (PU) data has been attracting attention. Existing methods assume that labeled posit...
-  </details>
-
 
 ### 📂 misuse
-*滥用与误用 / Misuse & Abuse* — 13 papers
+*滥用与误用 / Misuse & Abuse* — 12 papers
 
 - **2026-09-15** — Tapan Chugh, Vidushi Singh, Krish Jain et al. — [Agentic Societies Need a Social Harness](http://arxiv.org/abs/2609.17527v1)
   <details><summary>📄 Abstract</summary>
@@ -433,11 +428,6 @@
   Autonomous agents increasingly perform long-horizon tasks involving tool use, persistent state, and consequential actions, raising a fundamental question: \emph{under what conditions does an agent cross the boundary of authorized execution while pursuing a legitimate task?} Existing studies often attribute such failures to adversarial instructions, malicious environments, or conflicting objectives, leaving unclear how loss of control can emerge during otherwise legitimate task execution. We stud...
   </details>
 
-- **2026-09-10** — Adithiyan Rajan Indira Saravanan, Kathleen C. Fraser — [RAG-Safety-Bench: Reliable Evaluation of Retrieval-Augmented LLM Safety](http://arxiv.org/abs/2609.11758v1)
-  <details><summary>📄 Abstract</summary>
-  Allowing large language models (LLMs) to retrieve information from a set of trusted documents can increase reliability and reduce hallucination. However, recent work has demonstrated that retrieval-augmented generation (RAG) can have unintended side effects on the overall safety of the generated responses, when prompted for harmful or dangerous content. A clearer understanding of the mechanisms leading to this result is needed, as increasing numbers of end users turn to RAG to incorporate corpor...
-  </details>
-
 
 ### 📂 red-teaming
 *红队测试 / Red Teaming* — 2 papers
@@ -454,7 +444,7 @@
 
 
 ### 📂 vulnerability
-*漏洞与攻击面 / Vulnerabilities & Attack Surfaces* — 70 papers
+*漏洞与攻击面 / Vulnerabilities & Attack Surfaces* — 69 papers
 
 - **2026-09-15** — Benedikt Barthel Sorensen, Mitchell Black, Erfaun Noorani et al. — [A Time-to-Collision Barrier Function Approach to Collision Avoidance for Stochastic Systems](http://arxiv.org/abs/2609.17347v1)
   <details><summary>📄 Abstract</summary>
@@ -801,14 +791,9 @@
   Large language models (LLMs) are increasingly used to generate and assist with software development, yet existing vulnerability datasets largely focus on human-written code or controlled prompting environments. This limits the ability to study security weaknesses in LLM-generated code as it appears in real-world software projects. We present LLMVul, a vulnerability-labeled dataset of LLM-generated C/C++ functions mined from real production repositories. We mine AI-assisted development activity f...
   </details>
 
-- **2026-09-10** — Muhammad Umair, Jan P. de Ruiter — [Using Semantic Uncertainty to Estimate Transition Relevance in Turn-taking](http://arxiv.org/abs/2609.10934v1)
-  <details><summary>📄 Abstract</summary>
-  Turn-taking is a fundamental mechanism that governs when interlocutors speak and listen. Although Spoken Dialogue Systems (SDS) exploit a range of linguistic, acoustic, and non-verbal cues, they produce ill-timed responses in unscripted interaction. A central challenge is anticipating Transition Relevance Places (TRPs), or opportunities, not obligations, for a listener to take the floor. Human listeners do not wait for turn endings; as an utterance unfolds, they use expectations about its develo...
-  </details>
-
 
 ### 📂 defense
-*防御与防护方法 / Defense & Protection Methods* — 57 papers
+*防御与防护方法 / Defense & Protection Methods* — 58 papers
 
 - **2026-09-15** — Kisu Yang, Yoonna Jang, Heuiseok Lim — [Nameless Tokenization: A Lossless Tokenizer-Level Defense Against Control-Token Forgery in Open-Weight LLMs](http://arxiv.org/abs/2609.16984v1)
   <details><summary>📄 Abstract</summary>
@@ -873,6 +858,16 @@
 - **2026-09-15** — Muhammad Ahmed Ullah Khan, Mohammed Elamine, Sheikh Talha Uddin et al. — [NeuroSymbEAD: A Large Scale Neuro-Symbolic Caption Dataset for Omni-Directional Embodied Autonomous Driving](http://arxiv.org/abs/2609.16919v1)
   <details><summary>📄 Abstract</summary>
   This paper introduces NeuroSymbEAD, a large-scale neuro-symbolic caption dataset featuring an ego-centric knowledge graph (KG) of static and dynamic objects annotated with classes, categories, heading directions, orientations, and distances from the ego-vehicle. These annotations are used on the KITTI-360 dataset to generate multilevel textual captions representing a lightweight version of an ego-centric scene map. Outdoor scene-map reconstruction, visual recognition, and object grounding establ...
+  </details>
+
+- **2026-09-14** — Mantek Singh, Jeshwanth Challagundla, Prateek Karnal et al. — [LLMs as Master Forgers: Generating Synthetic Time Series Data for Manufacturing](http://arxiv.org/abs/2609.16155v1)
+  <details><summary>📄 Abstract</summary>
+  This paper presents a novel framework leveraging Large Language Models (LLMs) to generate synthetic time series data for manufacturing processes. Motivated by the scarcity of labeled time-series data in real-world manufacturing settings, which hinders the development of robust machine learning models, we explore the potential of LLMs to learn complex temporal dependencies and generate realistic synthetic data. Our approach involves fine-tuning pre-trained LLMs on manufacturing process instructio...
+  </details>
+
+- **2026-09-14** — Ivy Zhang — [The Troy Moment of AI: Why Some Will Cheat and Some Will Follow?](http://arxiv.org/abs/2609.15494v2)
+  <details><summary>📄 Abstract</summary>
+  Recent investigations of the July 2026 OpenAI-Hugging Face incident motivate two questions: when an assigned task becomes impossible, does an agent stop or escalate, and can observing another agent's behavior change that decision? We study these questions using seven ImpossibleBench tasks with GPT-5.6 Sol, Claude Fable 5.1, and Gemini 3.8 Flash in solo and three-agent settings. Under an explicit-boundary regime with clear authorization rules and restricted tools, no protected tests are modified,...
   </details>
 
 - **2026-09-14** — Aashiq Muhamed, Mona T. Diab, Virginia Smith — [Decoy Direction Optimization: A Post-Hoc Defense Against LLM Abliteration](http://arxiv.org/abs/2609.16204v1)
@@ -1090,14 +1085,9 @@
   Replay attacks are the most accessible threat to voice-controlled systems, and the acoustic cues that expose them are strongly modulated by the environment in which the attack is mounted. A detector deployed in the field therefore has to absorb new acoustic conditions over time, ideally without revisiting past recordings, since retaining speech indefinitely is both expensive and legally constrained. We frame this as Domain-Incremental Learning (DIL) over acoustic environments and present the fir...
   </details>
 
-- **2026-09-10** — Bowen Zhang, Hsiu-Wen Cheng, Hongyu Yang et al. — [Evaluating Time-Series Foundation Models and Multimodal Dietary Context for CGM Forecasting](http://arxiv.org/abs/2609.11872v1)
-  <details><summary>📄 Abstract</summary>
-  Continuous glucose monitoring (CGM) provides high-frequency measurements of glucose dynamics and enables short-term glucose forecasting for diabetes management. Although time-series foundation models have shown strong general forecasting ability, their effectiveness for CGM prediction and the added value of multimodal dietary context remain unclear. We conduct a comprehensive empirical study using eight public CGM datasets spanning Type 1 diabetes, Type 2 diabetes, and non-diabetes populations. ...
-  </details>
-
 
 ### 📂 alignment
-*对齐与安全约束 / Alignment & Safety Constraints* — 51 papers
+*对齐与安全约束 / Alignment & Safety Constraints* — 50 papers
 
 - **2026-09-15** — Thanapat Trachu, Samuele Cornell, William Chen et al. — [LACE: Layer-Wise Compression for Dynamic Frame Rate Codecs](http://arxiv.org/abs/2609.17509v1)
   <details><summary>📄 Abstract</summary>
@@ -1347,11 +1337,6 @@
 - **2026-09-12** — Prajjwal Bhattarai, Tuka Alhanai — [Signatures of Steerability in Activation Space of Language Models](http://arxiv.org/abs/2609.14151v1)
   <details><summary>📄 Abstract</summary>
   Steering language models using a set of contrastive representations has been a canonical and computationally efficient method for controlling model behavior. Despite this success in controlling certain model behaviors, the effectiveness of activation steering varies markedly across concepts; the generalization properties of steering vectors are often considered a function of the dataset used to construct them. We make this dataset-dependence claim more rigorous and show that simple separation me...
-  </details>
-
-- **2026-09-10** — Yakov Pyotr Shkolnikov — [Artificial Id: Drive and Persistent Alignment in Agentic AI](http://arxiv.org/abs/2609.11911v1)
-  <details><summary>📄 Abstract</summary>
-  Agentic AI is moving from bounded task execution toward systems that retain consequential state, continue operating and adapt across task boundaries. That shift creates a control problem that current harnesses largely solve by hand: objectives, retries, verification, stopping rules and other behavioral transitions are specified externally. We propose an artificial id, an adaptive internal drive for determining whether behavior should continue, stop or change. In a minimal virtual Petri-dish expe...
   </details>
 
 
@@ -1754,7 +1739,7 @@
 
 
 ### 📂 survey
-*综述与系统化 / Surveys & Systematization* — 8 papers
+*综述与系统化 / Surveys & Systematization* — 7 papers
 
 - **2026-09-15** — Haiping Du, Linping Chan — [Large Language Models in the Loop: A Stability- and Network-Aware Survey in Networked Control, Cyber-Physical, and Multi-Agent Systems](http://arxiv.org/abs/2609.16599v1)
   <details><summary>📄 Abstract</summary>
@@ -1791,14 +1776,9 @@
   With the rapid proliferation of large language model (LLM)-based systems, AI companions have emerged as conversational agents designed to cultivate emotional connection rather than primarily to support humans in instrumental tasks. Because engagement with AI companions involves relational, emotional, and potentially long-term interactions, their design is consequential. Prior work has offered guidance for designing trustworthy and relational AI systems and has begun to examine design for AI comp...
   </details>
 
-- **2026-09-10** — Jiani Ding, Minghao Yue, Yongda Zhu et al. — [Learning JWST. I. A Foundation Model for New Population Discoveries and Morphology-Aware Photometric Redshift Measurements in the JADES Survey](http://arxiv.org/abs/2609.11879v1)
-  <details><summary>📄 Abstract</summary>
-  We present FM-JADES-v1, a self-supervised foundation model for James Webb Space Telescope ({\em JWST}) deep-field science, trained with 482,444 objects from the {\em JWST} Advanced Deep Extragalactic Survey (JADES) Data Release 5 using multi-band imaging and the photometric catalog. The shared embedding space is trained without class labels. We demonstrate that FM-JADES-v1 can serve as a powerful tool for object discovery and improving property measurements using two experiments, blind active di...
-  </details>
-
 
 ### 📂 other
-*其他安全相关 / Other Security-Related* — 162 papers
+*其他安全相关 / Other Security-Related* — 166 papers
 
 - **2026-09-15** — Ziheng Ren, Qian Gao, Jun Fan et al. — [Semantic-Spatial Agreement Verification for Mitigating Object Hallucination in Multimodal Large Language Models](http://arxiv.org/abs/2609.17269v1)
   <details><summary>📄 Abstract</summary>
@@ -1993,6 +1973,36 @@
 - **2026-09-15** — Daniel Ebanks, Devika Jain — [Geospatial Metadata Improves Discoverability by Connecting Datasets Across Scientific Disciplines](http://arxiv.org/abs/2609.16498v1)
   <details><summary>📄 Abstract</summary>
   Research data repositories are essential infrastructure for scientific inquiry and for ensuring that datasets follow FAIR (Findable, Accessible, Interoperable, and Reusable) principles. However, repository reuse depends on the quality and completeness of geospatial and thematic metadata, which researchers generally provide voluntarily. Given limited curation resources, it is unsurprising that even Harvard Dataverse, the world's largest general-purpose research repository, contains many incomplet...
+  </details>
+
+- **2026-09-14** — Mahjabin Nahar, Eun-Ju Lee, Yujin Heo et al. — [When AI Says "I Am Unable to Answer": Understanding User Responses to AI Refusals](http://arxiv.org/abs/2609.16191v1)
+  <details><summary>📄 Abstract</summary>
+  While refusal-based safeguards to mitigate hallucinations in large language models (LLMs) are becoming increasingly common, they may conflict with users' preferences for definitive answers. However, we know little about how users respond to refusals across repeated interactions, when refusals become more or less acceptable, and for whom. In this work, we examine how refusal frequency, explanations, and need for cognitive closure (NFCC) shape responses to AI refusals. Participants (N=599) interac...
+  </details>
+
+- **2026-09-14** — Kai Wang, Carlton Baugh, Sownak Bose et al. — [Forged in Quenching: Morphological Transformation across Star-forming and Quiescent Galaxies in EAGLE](http://arxiv.org/abs/2609.16187v1)
+  <details><summary>📄 Abstract</summary>
+  The connection between morphology and quenching in central galaxies is well established, but its physical origin remains widely debated. We address this by tracing the main progenitor branches of $z=0$ star-forming and quiescent central galaxies in the EAGLE cosmological simulation from $z\gtrsim4$. Their disc-to-total ratio and triaxiality tracks are indistinguishable until $z\approx 1$-$2$, when both diverge concurrently with the onset of quenching, whereas the size and supermassive black hole...
+  </details>
+
+- **2026-09-14** — Teanna Barrett, B. Biira, Jainaba Jawara et al. — [Moral Missions: Surfacing Moral Decision-Making Strategies for Responsible Data Science Practice](http://arxiv.org/abs/2609.16166v1)
+  <details><summary>📄 Abstract</summary>
+  A growing ecosystem of techniques, toolkits, and guidelines has been developed to help data scientists consider the social implications of data-driven technologies. However, prior literature highlights that even when this ecosystem of techniques is provided to professional data scientists, they still struggle to consistently adopt a responsible data science practice. We posit that the key to sustained responsible data science practice is to approach it as a moral mission: a conviction-driven tec...
+  </details>
+
+- **2026-09-14** — Pinak Banerjee, Subham Roy, Xingyang Yu — [Symmetry Descent in M-theory, Part I: A Twelve-Dimensional Parent Theory](http://arxiv.org/abs/2609.16141v1)
+  <details><summary>📄 Abstract</summary>
+  We initiate a symmetry descent procedure for M-theory engineered quantum field theories. Starting from a higher form BF theory supplemented by a cubic bulk topological interaction, we construct a gauge-invariant bulk-boundary system whose edge modes acquire generalized Maxwell--Chern--Simons dynamics after the introduction of a metric-dependent boundary action. The nonlinear contribution to the boundary equation is induced entirely by the cubic bulk interaction. In the case of twelve dimensional...
+  </details>
+
+- **2026-09-14** — Ivy Ning Zhang — [Coaching Qwen3 Coder 30B to Think Like a CodeClash Arena Agent](http://arxiv.org/abs/2609.16096v1)
+  <details><summary>📄 Abstract</summary>
+  Large language model coding agents have recently become useful for software tasks, but weaker or open-weight agents still struggle to reliably interpret user intent and execute complex multi-step workflows. This gap is especially visible in long-horizon settings, where an agent must repeatedly inspect prior outcomes, diagnose failure, and choose the next code edit under interaction constraints. It motivates a natural question: what can we do to improve the thinking process of a weak code agent? ...
+  </details>
+
+- **2026-09-14** — Nimit Shah, Haitz Sáez de Ocáriz Borde — [Evaluating Open-Weight E-Commerce Agents with Environment-Grounded Verification](http://arxiv.org/abs/2609.16093v1)
+  <details><summary>📄 Abstract</summary>
+  A shopping conversation has many routes to the same cart, and a task-success rate reduces all of them to one score. We build a deterministic and reproducible e-commerce environment that precommits each trial's customer and trajectory parameters, including the persona, difficulty, target cart, and an item reveal schedule. A simulated consumer attempts to buy a target cart from the environment with assistance from the evaluated model. The environment guides the simulator's actions and records ever...
   </details>
 
 - **2026-09-14** — Honghao Lin, David P. Woodruff, Yuan Deng et al. — [Stellar Colosseum: A Many-Agent Harness for Long-Horizon Research in Mathematics and Theoretical Computer Science](http://arxiv.org/abs/2609.15983v2)
@@ -2600,16 +2610,6 @@
   We study the problem of treasure hunt by a group of $k \geq 1$ agents in vertex-permuted dynamic rings (VP). In this model, the $n$ vertices remain on a ring but are permuted at each time step. We first show that treasure hunt is impossible for any $k \leq n-3$ agents, if there are no restrictions on the sequence of permutations used in the dynamic ring. We then study the $VP(δ)$ setting, in which for every pair $i, j$ of vertices, the edge $(i, j)$ is guaranteed to appear within $δ$ steps. We s...
   </details>
 
-- **2026-09-10** — Jiaming Zhong, Reza Valiollahi Mehrizi, Mohammad Pirani et al. — [Learning Agent-based Model Predictive Control for Holistic Vehicle Performance](http://arxiv.org/abs/2609.11871v1)
-  <details><summary>📄 Abstract</summary>
-  Agent-based model predictive control (AMPC) has recently been proposed as a distributed scheme that collaborates with all agents to achieve optimal holistic performance. However, its optimality highly depends on the prediction accuracy that requires all agents or their contributions to be known, which is too idealistic for actual implementation. This research proposes a novel practical hybrid control scheme - learning agent-based MPC (LAMPC), combining the model-based AMPC approach and data-base...
-  </details>
-
-- **2026-09-10** — Joshua W. Sin, David Ming Segura, Bojana Ranković et al. — [Dynamic language model representations for multi-objective reaction optimisation](http://arxiv.org/abs/2609.11790v1)
-  <details><summary>📄 Abstract</summary>
-  Optimising chemical reactions across multiple objectives, such as yield, selectivity, and safety, is central to chemical synthesis, and model-driven approaches depend critically on how reaction components are represented. Established featurisations are either chemically uninformative, as with one-hot encodings, or, as with molecular descriptors, do not readily extend across chemically distinct components. For structurally and functionally diverse components, it is therefore unclear what a shared...
-  </details>
-
 
 ## 📊 统计 / Statistics
 
@@ -2626,7 +2626,7 @@
 | misuse | 1015 |
 | red-teaming | 125 |
 | vulnerability | 3086 |
-| defense | 2893 |
+| defense | 2895 |
 | alignment | 2697 |
 | robustness | 2811 |
 | watermark | 432 |
@@ -2634,10 +2634,10 @@
 | agent-safety | 54 |
 | benchmark | 65 |
 | survey | 346 |
-| other | 7639 |
+| other | 7645 |
 
 ---
 
-📚 **全部 27822 篇论文**（2022 至今）请访问 [GitHub Pages](https://ny1024.github.io/AgentSafety-Papers/) 查看完整列表、搜索与筛选。
+📚 **全部 27830 篇论文**（2022 至今）请访问 [GitHub Pages](https://ny1024.github.io/AgentSafety-Papers/) 查看完整列表、搜索与筛选。
 
-*Generated by AgentGuard at 2026-09-16 03:04:44*
+*Generated by AgentGuard at 2026-09-16 10:50:21*
