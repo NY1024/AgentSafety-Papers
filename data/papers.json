@@ -1,5 +1,225 @@
 [
   {
+    "arxiv_id": "2610.20597v1",
+    "title": "Co-Evolving Acting and Forecasting for Language Agents",
+    "authors": [
+      "Haofei Yu",
+      "Yixing Chen",
+      "Yining Zhao",
+      "Xuyan Ye",
+      "Yuxiang Liu",
+      "Zhigang Hua",
+      "Yan Xie",
+      "Shuang Yang",
+      "Jiaxuan You"
+    ],
+    "abstract": "Training language agents is bottlenecked by the high cost of long-horizon rollouts, yet standard agentic reinforcement learning (RL) learns only from a terminal scalar reward, leaving the supervision in intermediate steps largely unused. Prior work exploits this supervision through value targets that estimate per-step success probabilities or observation targets that fit environment response. Both are hard to construct well: (1) value targets come from the same single scalar signal for each step in the trajectory, and (2) observation targets, such as web pages and terminal logs, are long and noisy and reach only one step ahead. We propose \\name, which adds a third kind of multi-step action targets. On successful on-policy trajectories, \\name trains the policy backbone to generate the action sequences that follows each history. Each action is also supervised when forecast from the preceding histories, forming a temporal ensemble that the shared backbone absorbs during training, and this enables acting and forecasting to co-evolve. The policy still acts one step at a time at inference, with no overhead. Across five benchmarks (ALFWorld, ScienceWorld, WebShop, $τ^2$-bench, and AppWorld), \\name (1) achieves stronger aggregate performance than GRPO and RL baselines with predictive auxiliary targets across simulated environments, while improving overall performance on both realistic applications; (2) delivers up to $1.9\\times$ and $2.0\\times$ higher sample efficiency than ECHO and GRPO, respectively, on ScienceWorld; and (3) achieves these gains with a single policy backbone, without additional models, separate pretraining, or inference overhead. The codebase is available at https://github.com/ulab-uiuc/CoPE.",
+    "published": "2026-10-14",
+    "updated": "2026-10-14",
+    "primary_category": "cs.AI",
+    "pdf_url": "https://arxiv.org/pdf/2610.20597v1",
+    "abs_url": "http://arxiv.org/abs/2610.20597v1",
+    "category": "vulnerability",
+    "summary_zh": "",
+    "has_code": false,
+    "code_url": ""
+  },
+  {
+    "arxiv_id": "2610.20567v1",
+    "title": "Prioritizing Microservice Requests via Retries",
+    "authors": [
+      "Ofek Lavi",
+      "Jhonatan Tavori",
+      "Hanoch Levy",
+      "Anat Bremler-Barr"
+    ],
+    "abstract": "Cloud services rapidly shift towards independently-managed microservices architectures. This independence may lead to temporary microservices miscoordination, resulting in overloads and rejections of valuable transactions. This weakness may further be exploited by attackers to launch overload attacks inflicting performance and cost damages.   Retry operations are a key machinery aiming at overcoming seldom rejections. However, during overload periods they: a) Fail protecting valuable transactions from rejections, and b) Trigger large-scale performance-degrading retry storms.   We propose simple modifications in retry operations, overcoming these deficiencies by transforming retries into a rejection prioritization mechanism, DiffTry (Differential Retries). It is based on a simple, lightweight, distributed and stateless design and requires neither overload sensing nor microservices coordination.   We develop an analytical model capturing DiffTry's effectiveness for two services in tandem, then generalize it to networks of services. Our theoretical framework lets practitioners quantify, for a given network, the resulting prioritization and rejection rates, and yields formal guarantees that DiffTry substantially reduces the impact of both incidental and adversarial orchestrated overloads. We validate these predictions in simulation and on a live Kubernetes deployment, where DiffTry is a simple drop-in service-mesh plugin requiring no application changes; the measured rejection closely matches the analysis.",
+    "published": "2026-10-14",
+    "updated": "2026-10-14",
+    "primary_category": "cs.NI",
+    "pdf_url": "https://arxiv.org/pdf/2610.20567v1",
+    "abs_url": "http://arxiv.org/abs/2610.20567v1",
+    "category": "vulnerability",
+    "summary_zh": "",
+    "has_code": false,
+    "code_url": ""
+  },
+  {
+    "arxiv_id": "2610.20055v1",
+    "title": "GeoCloak: An Agentic Framework for Semantics-Preserving Geolocation Privacy via Peripheral Clue Manipulation",
+    "authors": [
+      "Yixin Wu",
+      "Mingjie Li",
+      "Yun Shen",
+      "Michael Backes",
+      "Yang Zhang"
+    ],
+    "abstract": "The rapid advancement of large vision language models (LVLMs) has made geolocation inference from images highly accurate and accessible. This poses serious privacy risks: a passive adversary with black-box LVLM access can infer a user's location from a single photo with no metadata. Existing protection methods rely almost exclusively on adversarial perturbation, which introduces perceptible visual artifacts and utility degradation. We identify the visual-geolocation asymmetry: geolocation-decisive clues, such as street signs, tend to be visually peripheral but dominate location inference. Exploiting this asymmetry, we propose GeoCloak, an agentic framework for semantics-preserving geolocation privacy protection. It acts as a clue-aware planner that analyzes each image to identify geolocation-relevant clues, dispatches targeted semantic edits to directly suppress peripheral clues, and autonomously configures adversarial perturbation to further suppress residual geolocation features, all under iterative utility-aware feedback. We evaluate GeoCloak on four diverse datasets spanning 108 countries and 576 cities against five LVLMs and three inference methods. GeoCloak reduces overall city-level accuracy from 41.2% to 9.9%, approximately half of the best-performing baseline, while achieving substantially superior utility preservation both qualitatively and quantitatively. We hope this work takes a meaningful step toward practical, semantics-preserving geolocation privacy protection, giving users greater control over the location information inadvertently embedded in their shared images.",
+    "published": "2026-10-14",
+    "updated": "2026-10-14",
+    "primary_category": "cs.CV",
+    "pdf_url": "https://arxiv.org/pdf/2610.20055v1",
+    "abs_url": "http://arxiv.org/abs/2610.20055v1",
+    "category": "adversarial-attack",
+    "summary_zh": "",
+    "has_code": false,
+    "code_url": ""
+  },
+  {
+    "arxiv_id": "2610.19824v1",
+    "title": "Resilient Angle-Constrained Formation Control and Localization Under DoS Attacks (Extended Version)",
+    "authors": [
+      "Nhat-Minh Le-Phan",
+      "Ziliang Lyu",
+      "Lihua Xie"
+    ],
+    "abstract": "This paper studies resilient angle-constrained leader--follower formation control and localization of multi-agent systems under asynchronous denial-of-service (DoS) attacks, which block individual sensing and communication links. To preserve the well-posedness of angle-based localization, an all-or-nothing triangle integrity protocol (ANTIP) is proposed to convert edge-wise attacks into triangle-wise ones, and DoS attacks are classified into localizability-maintained and localizability-broken attacks. First, with relative position measurements over attack-free links, resilient formation tracking laws are designed for leaders with constant velocities and with time-varying velocities comprising translational, rotational, and scaling motions. These laws guarantee asymptotic tracking and finite-time recovery of tracking, respectively, when the duration of localizability-broken attacks is suitably bounded. Second, with only angle measurements and communications, a resilient simultaneous localization and formation control (RSLAF) scheme is developed. It combines a finite-time distributed observer, which estimates the exosystem matrices and states under asynchronous DoS attacks, with a perturbation-based localization law that prevents localization from getting stuck at degenerate configurations. The theoretical results are rigorously proved and illustrated by numerical simulations.",
+    "published": "2026-10-14",
+    "updated": "2026-10-14",
+    "primary_category": "eess.SY",
+    "pdf_url": "https://arxiv.org/pdf/2610.19824v1",
+    "abs_url": "http://arxiv.org/abs/2610.19824v1",
+    "category": "other",
+    "summary_zh": "",
+    "has_code": false,
+    "code_url": ""
+  },
+  {
+    "arxiv_id": "2610.19822v1",
+    "title": "JointServe: Serving Multi-Model Agents on Memory-Constrained GPUs",
+    "authors": [
+      "Daijin Hu"
+    ],
+    "abstract": "LLM agents are evolving from a single model calling tools to planners that orchestrate multiple expert models whose capabilities live in distinct weights. This shift breaks a hidden assumption of today's serving systems: that the working set of models fits in GPU memory. On the memory-constrained GPUs typical of private and edge deployments, naive whole-model swapping serializes weight transfer with computation and, without host-backed KV restoration, discards session state at a switch. We present JointServe, a serving system that treats weight shards and KV blocks as residency objects competing for one unified memory budget. JointServe exploits three structural properties of agent workloads (directed calls, gapped execution, and dual-state residency) to prepare models before they are called: an intent signal parsed from the caller's own output stream triggers prefetch during generation, partial k* residency reduces switching to incremental layers, and a preemptive transfer scheduler protects live-session KV with a guaranteed bandwidth share. A carve-out control step adjusts the weight/KV allocation as workload demands change. Evaluations show that JointServe reduces session completion time by 21.7% over the strongest whole-model swap baseline and stays usable in a crash regime where every whole-model swap baseline fails to finish (a 46-fold gap). On replayed SWE-bench, tau-bench, and OSWorld traces, it cuts session completion time by up to 49% and lifts SLO attainment from 2.8-24.5% to 76.8-100%.",
+    "published": "2026-10-14",
+    "updated": "2026-10-14",
+    "primary_category": "cs.DC",
+    "pdf_url": "https://arxiv.org/pdf/2610.19822v1",
+    "abs_url": "http://arxiv.org/abs/2610.19822v1",
+    "category": "vulnerability",
+    "summary_zh": "",
+    "has_code": false,
+    "code_url": ""
+  },
+  {
+    "arxiv_id": "2610.19764v1",
+    "title": "Verifying deployed bytecode against executable EVM semantics, with exact gas and no added axioms",
+    "authors": [
+      "Seulkee Baek"
+    ],
+    "abstract": "Much of Ethereum's most consequential code is immutable bytecode: old output of unverified compilers, and protocol logic run as contract code. We show that such bytecode can be verified as it is, without trusting what produced it, without simplifying the machine it runs on, and with no axioms beyond Lean's own. Blanc, a Lean 4 verification stack, reads fixed runtime bytes via kernel-checked certificates and states every theorem against Jaune, an executable semantics of the EVM and block processing that passes all 34,205 blockchain-test cases of Ethereum's fixture release v20.0.2 that involve only forks that have governed mainnet since May 2025. Eight artifacts, deployed from 2017 to 2026, come from seven compiler versions and an assembler. For the EIP-7002 contract, we prove that the end-of-block call to it, whose failure would invalidate the block, succeeds whatever its storage holds, and that each block's withdrawal requests are exactly the oldest pending submissions; mainnet met these theorems' starting premises when Prague began. For a Uniswap V2 pair, we prove that after any valid history whose hashed slots stay apart, from any checkpoint representing its Solidity model's state, the storage represents that model replayed over exactly the committed calls, a balanced liquidity ledger stays balanced, and, under a premise on token answers, geometric-mean reserves per share fall only through the protocol fee. Exact gas makes liveness provable: a tracked WETH9 holder without code can withdraw by a transaction whose gas has a closed form, matching all 3,748 comparable mainnet receipts of its shape in 30,000 blocks. On Curve pool bytes compiled with the lock bug exploited in 2023, Jaune executes such a reentrancy from deployment; for bytes from a fixed compiler, we prove the lock excludes it. AI agents wrote the proofs in fifteen days under one author's direction, atop an existing stack.",
+    "published": "2026-10-14",
+    "updated": "2026-10-14",
+    "primary_category": "cs.PL",
+    "pdf_url": "https://arxiv.org/pdf/2610.19764v1",
+    "abs_url": "http://arxiv.org/abs/2610.19764v1",
+    "category": "vulnerability",
+    "summary_zh": "",
+    "has_code": false,
+    "code_url": ""
+  },
+  {
+    "arxiv_id": "2610.19614v1",
+    "title": "Divergent Paths: Learning an Outcome-Predictive Representation of LLM Agent Trajectories",
+    "authors": [
+      "Alexander Gill",
+      "Guram Gogia",
+      "Francisco Guzmán"
+    ],
+    "abstract": "In this work, we reframe agentic trajectories as paths through a shared embedding space of actions and environmental observations. We show that successful and failed rollouts of the same task separate in this space, with simple per-task discriminators predicting held-out rollout outcomes at up to 0.95 AUROC across three agent benchmarks and three policy models. To exploit this signal across tasks, we introduce Precog-RM, a transformer-based model that meta-learns a representation in which outcome prediction can be performed in a few-shot setting. We show that Precog-RM generalizes to unseen tasks and models, and gives confident predictions of trajectory success long before termination. Deployed as an early stopping controller for Group Relative Policy Optimization (GRPO) on Tau2-Bench, Precog-RM cuts training FLOPs by up to 47.3\\% while maintaining performance comparable to baseline GRPO.",
+    "published": "2026-10-14",
+    "updated": "2026-10-14",
+    "primary_category": "cs.LG",
+    "pdf_url": "https://arxiv.org/pdf/2610.19614v1",
+    "abs_url": "http://arxiv.org/abs/2610.19614v1",
+    "category": "vulnerability",
+    "summary_zh": "",
+    "has_code": false,
+    "code_url": ""
+  },
+  {
+    "arxiv_id": "2610.19476v1",
+    "title": "What Does LALM Post-training Learn? Rethinking Audio Understanding and Reasoning Capabilities",
+    "authors": [
+      "Hua-Hsuan Chen",
+      "Xuanjun Chen",
+      "Wei-Chung Lu",
+      "Chih-Kai Yang",
+      "Yu-Xiang Lin",
+      "Sung-Feng Huang",
+      "Haibin Wu",
+      "Hung-yi Lee"
+    ],
+    "abstract": "Post-training often improves the performance of large audio-language models on audio understanding and reasoning benchmarks. However, these improvements may reflect adaptation to specific question formats, such as multiple-choice questions, rather than genuine advances in audio understanding and reasoning capabilities. To investigate what LALMs actually learn from post-training, we conduct controlled experiments that disentangle improvements in audio understanding from adaptation to specific question formats. Across different models and post-training methods, we find that much of the reported improvement persists even without informative audio, but largely disappears when the question format changes. These findings suggest that post-training often teaches models to exploit task-specific textual cues and answer patterns rather than developing generalizable audio understanding and reasoning capabilities.",
+    "published": "2026-10-14",
+    "updated": "2026-10-14",
+    "primary_category": "cs.SD",
+    "pdf_url": "https://arxiv.org/pdf/2610.19476v1",
+    "abs_url": "http://arxiv.org/abs/2610.19476v1",
+    "category": "vulnerability",
+    "summary_zh": "",
+    "has_code": false,
+    "code_url": ""
+  },
+  {
+    "arxiv_id": "2610.19372v1",
+    "title": "Policy-Verified Self-Training: Learning Agent Compliance from Verifiable Policy Rewards",
+    "authors": [
+      "Min-Young Yu"
+    ],
+    "abstract": "Runtime policy verifiers can prevent agents from executing disallowed actions, but their decisions are typically used only for enforcement and discarded afterward. We ask whether these decisions can instead become verifiable policy rewards for training the agents they guard. We introduce Policy-Verified Self-Training (PVST), a post-training paradigm in which an agent generates its own interaction trajectories and an executable policy verifier, here a deterministic gate compiled from a written policy, evaluates whether each action complies. Compliant trajectories are reinforced, and violations become negatives for preference optimization; beyond the gate and the benchmark's task-success signal, PVST needs no stronger teacher model, no human preference labels and no attack-specific supervision, although rollouts are collected in the benchmark's attacked environment. On held-out AgentDojo tasks under prompt injection, policy-verified preference training of Qwen3-8B reduces violating trajectories from 37.2% to 10.3 $\\pm$ 0.9% (three seeds) and successful attacks from 12.4% to 0.5% at equal or higher pooled task utility, although utility falls on travel, compared with 22.0% when negatives are selected by an attack oracle and 31.9 $\\pm$ 0.9% with negatives that contain no violation. The learned behavior holds under an attack template never used in training (37.7% to 11.0%) and on a suite excluded from training (34.8% to 16.7%), and the retained verifier's intervention rate falls from 39.2% to 8.8% (seed 0). Our analysis identifies two conditions under which the verdict is most informative: success must not already imply compliance, and guarded actions must appear in both permitted and forbidden contexts.",
+    "published": "2026-10-14",
+    "updated": "2026-10-14",
+    "primary_category": "cs.LG",
+    "pdf_url": "https://arxiv.org/pdf/2610.19372v1",
+    "abs_url": "http://arxiv.org/abs/2610.19372v1",
+    "category": "prompt-injection",
+    "summary_zh": "",
+    "has_code": false,
+    "code_url": ""
+  },
+  {
+    "arxiv_id": "2610.20502v1",
+    "title": "Graph-Enhanced Disease Trajectory Discovery and Temporal Endpoint Forecasting from Longitudinal Electronic Health Records",
+    "authors": [
+      "Jin-Jia Zheng",
+      "Vincent S. Tseng"
+    ],
+    "abstract": "Longitudinal electronic health records (EHRs) can reveal disease-progression structure, while useful forecasting requires leakage-controlled discovery, censor-aware outcomes, and inspectable trajectory evidence. We developed a graph-enhanced framework in MIMIC-IV v3.1 that splits patients before graph construction, learns train-only consecutive-admission transitions, and freezes endpoint-specific branching-motif policies selected on validation data. The final catalog contained 99,527 motifs, and a time-aware Transformer retrieved at most 24 patient-compatible motifs per endpoint through endpoint-specific cross-attention. Across five training seeds, micro-AUPRC increased from 0.9330 to 0.9357, while event-time MAE decreased from 676.9 to 657.7 days (reduction 19.2 days; 95% paired patient-cluster bootstrap CI, 13.8-24.8). Timing effects were heterogeneous: MAE worsened for events within 730 days but improved by 58.9 days for events occurring after 730 days. In an exploratory internal temporal split, branch conditioning reduced conditional event-time MAE by 26.9 days (95% CI, 23.0-30.8) without evidence of better micro-AUPRC. Corrected survival evaluation over the supported 0-2,555-day interval did not establish macro C-index or integrated Brier score superiority over a matched history-only discrete-hazard model. A directed, degree-matched GNN repair substantially improved unseen-edge discovery, yet replacing GNN-derived scores within fixed motif identities did not improve downstream forecasting. These results position branching motifs as structured trajectory context whose main value is long-range timing support rather than uniformly stronger endpoint discrimination, survival prediction, or causal explanation.",
+    "published": "2026-10-14",
+    "updated": "2026-10-14",
+    "primary_category": "cs.LG",
+    "pdf_url": "https://arxiv.org/pdf/2610.20502v1",
+    "abs_url": "http://arxiv.org/abs/2610.20502v1",
+    "category": "privacy-leakage",
+    "summary_zh": "",
+    "has_code": false,
+    "code_url": ""
+  },
+  {
+    "arxiv_id": "2610.19613v1",
+    "title": "Are We Really Measuring Forgetting? Pitfalls in Evaluating Machine Unlearning for Multimodal LLMs",
+    "authors": [
+      "Oscar Chew",
+      "Po-Yi Lu",
+      "Yi-Jie Cheng",
+      "Kunal Jain",
+      "Hsuan-Tien Lin",
+      "Zhengzhong Tu",
+      "Kuan-Hao Huang"
+    ],
+    "abstract": "As machine unlearning for multimodal large language models (MLLMs) rapidly advances, rigorous evaluation of its effectiveness becomes increasingly important. However, existing benchmarks largely inherit evaluation protocols from text-only unlearning and overlook the unique challenges of unlearning in multimodal settings. In this work, we identify three major pitfalls that may lead to misleading conclusions: the lack of heldout evaluation to distinguish genuine concept-wise forgetting from instance-wise overfitting, the reliance on synthetic, fine-tuned knowledge rather than real-world knowledge acquired during pre-training, and unfair method comparisons caused by applying the same training settings to different unlearning methods. To address these challenges, we introduce GEMMU (Generalizable Evaluation for Multimodal Machine Unlearning), a benchmark built on real-world knowledge and a principled evaluation protocol. Re-evaluating representative unlearning methods under GEMMU reveals substantial generalization gaps and challenges conclusions drawn from previous benchmarks. Our findings highlight the importance of rigorous evaluation for advancing multimodal machine unlearning and provide guidelines for future benchmark design.",
+    "published": "2026-10-14",
+    "updated": "2026-10-14",
+    "primary_category": "cs.CL",
+    "pdf_url": "https://arxiv.org/pdf/2610.19613v1",
+    "abs_url": "http://arxiv.org/abs/2610.19613v1",
+    "category": "unlearning",
+    "summary_zh": "",
+    "has_code": false,
+    "code_url": ""
+  },
+  {
     "arxiv_id": "2610.20608v1",
     "title": "Representation Conditioning for Generation",
     "authors": [
@@ -3828,6 +4048,312 @@
     "pdf_url": "https://arxiv.org/pdf/2610.19344v1",
     "abs_url": "http://arxiv.org/abs/2610.19344v1",
     "category": "other",
+    "summary_zh": "",
+    "has_code": false,
+    "code_url": ""
+  },
+  {
+    "arxiv_id": "2610.19306v1",
+    "title": "Did the LLM Answer the Question? A Semantic Reconstruction Game for Jailbreak Evaluation",
+    "authors": [
+      "Liam Davis",
+      "Romain Emil-Popescu",
+      "Suman Jana"
+    ],
+    "abstract": "Jailbreak attacks against large language models (LLMs) are evaluated using attack success rate (ASR), which depends on correctly identifying responses that fulfill prohibited requests. Existing evaluators can mistake refusals or topically related responses for successful attacks. We show that changing only the judge LLM can alter reported ASR by up to $82$ percentage points. We introduce the semantic reconstruction game, a training-free evaluator that decomposes compliance judgments into constrained semantic comparisons. Given only a response, an LLM reconstructs the request answered by its substantive content, excluding information merely repeated or refused. The game compares this reconstruction against similar decoy requests to determine whether it matches the original request, allowing abstention when neither candidate matches. Across three off-the-shelf LLM judges, the game achieves the lowest mean error against human labels among evaluated methods and reduces variation in reported ASR. It prioritizes avoiding false positives, even at the cost of missing some successful jailbreaks.",
+    "published": "2026-10-13",
+    "updated": "2026-10-13",
+    "primary_category": "cs.LG",
+    "pdf_url": "https://arxiv.org/pdf/2610.19306v1",
+    "abs_url": "http://arxiv.org/abs/2610.19306v1",
+    "category": "jailbreak",
+    "summary_zh": "",
+    "has_code": false,
+    "code_url": ""
+  },
+  {
+    "arxiv_id": "2610.19274v1",
+    "title": "Deep Learning for Atmospheric Turbulence Mitigation: A Comparison Between GANs and Transformers",
+    "authors": [
+      "Juan S. Carrillo",
+      "Jérôme Gilles"
+    ],
+    "abstract": "Atmospheric turbulence creates complex spatial and temporal distortions that significantly reduce image quality. This work compares two deep learning methods for turbulence reduction: Generative Adversarial Networks (GANs) and Transformer-based models. Both methods are trained and tested on the SOTIS dataset, which includes multi-frame sequences under different turbulence conditions with ground truth references. Our results show an important finding: GAN-based models perform better in severely degraded, low-quality situations, while Transformer-based models achieve better results in moderate to high-quality settings, especially in correcting geometric distortions. We also enhance the Turbulence Mitigation Transformer (TMT) by introducing a refined training strategy, an augmented input design that includes a temporally averaged frame as prior structural information, and a modified loss function that incorporates the Structural Similarity Index (SSIM). These improvements lead to consistent performance gains across various turbulence conditions. Overall, this study provides an in-depth evaluation of deep learning methods for turbulence reduction and offers practical guidance for selecting models in different imaging environments.",
+    "published": "2026-10-13",
+    "updated": "2026-10-13",
+    "primary_category": "eess.IV",
+    "pdf_url": "https://arxiv.org/pdf/2610.19274v1",
+    "abs_url": "http://arxiv.org/abs/2610.19274v1",
+    "category": "other",
+    "summary_zh": "",
+    "has_code": false,
+    "code_url": ""
+  },
+  {
+    "arxiv_id": "2610.19179v1",
+    "title": "Learning in Strategic Queuing with Geometric Recharge: From Bandits to Systems",
+    "authors": [
+      "Cristian Palma Foster",
+      "Eva Tardos"
+    ],
+    "abstract": "We study packet routing in queuing systems where queues act as selfish, myopic agents that use no-regret learning algorithms to select servers with unknown service rates. To model the small buffers used in data centers, we assume that each server has a single-packet buffer. Even such a tiny buffer already captures the features of buffering: routers can exploit multiple servers while accepted packets remain in service, but packets can occupy servers for multiple rounds, complicating future service and learning.   We first analyze a single queue routing packets to $m$ buffered servers with service rates $μ_1, \\dots, μ_m$. This setting is equivalent to an instance of the recharging bandits problem with geometric recharge. We prove that any no-regret learner achieves a long-run average throughput of at least the Hamacher sum of the server rates, and that this bound is tight. Consequently, a single no-regret queue is stable if and only if its arrival rate is below the Hamacher sum of the server rates. Moreover, comparing against an optimal policy, we show that any no-regret learner is at least $0.77$-competitive, which is also tight.   We then study multi-queue systems where $n$ queues with arrival rates $λ_1, \\dots, λ_n$, each at most $λ_{\\max}$, compete for service from $m$ buffered servers. We show that the smallest overprovisioning factor that guarantees the system to be stable under high-probability no-regret learning is $\\frac{1}{1-λ_{\\max}}$. Equivalently, in terms of the total arrival and service rates, the condition $\\sum_{i=1}^n λ_i < (1-λ_{\\max})\\sum_{j=1}^m μ_j$ is sufficient, and sometimes necessary, for stability under no-regret learning. In particular, for $λ_{\\max} = 1/2$, this improves the upper bound of Abel et al. (EC 2026) from $3$ to $2$, matching their lower bound and resolving their open question.",
+    "published": "2026-10-13",
+    "updated": "2026-10-13",
+    "primary_category": "cs.GT",
+    "pdf_url": "https://arxiv.org/pdf/2610.19179v1",
+    "abs_url": "http://arxiv.org/abs/2610.19179v1",
+    "category": "vulnerability",
+    "summary_zh": "",
+    "has_code": false,
+    "code_url": ""
+  },
+  {
+    "arxiv_id": "2610.19046v1",
+    "title": "What Information Buys in Active Inference",
+    "authors": [
+      "Melih Kandemir",
+      "Mustafa Mert Çelikok"
+    ],
+    "abstract": "Information-theoretic exploration is of primary interest in methodological studies of reinforcement learning (RL) and computational cognitive neuroscience, while the established RL theory builds regret guarantees on confidence sets. This situation leaves open the conditions under which the information-driven exploration found in nature is more advantageous than the exploration of the established RL theory. We put the state-of-the-art methods of these two paradigms, Active Inference (AIF) and Bayes-UCBVI, on an equal footing: both act through the same state abstraction of a tabular MDP with $S$ states, and their greedy forms differ only in the exploration term. We find that AIF's information gain decays too fast to serve as a confidence width, locking greedy agents that explore by it out of the optimal action. Calibrating the information gain by a square root yields calibrated AIF, which attains regret of order $\\sqrt T$ for an exact abstraction, but no better guarantee than Bayes-UCBVI for a fixed reward. When an adversary chooses rewards from the agent's data, Bayes-UCBVI's value-specific widths lock out, whereas calibrated AIF pays a factor $\\sqrt S$, which no goal-memoryless agent avoids on some MDP whose start states the adversary also chooses. Calibrated information gain thus acts as a reward-agnostic $\\ell_1$ confidence set, preferable to value-specific widths when rewards are chosen from the agent's data, not when they are fixed.",
+    "published": "2026-10-13",
+    "updated": "2026-10-13",
+    "primary_category": "cs.LG",
+    "pdf_url": "https://arxiv.org/pdf/2610.19046v1",
+    "abs_url": "http://arxiv.org/abs/2610.19046v1",
+    "category": "other",
+    "summary_zh": "",
+    "has_code": false,
+    "code_url": ""
+  },
+  {
+    "arxiv_id": "2610.18948v1",
+    "title": "Limits of Statistical Assurance for Embodied and Agentic AI under Adaptive Adversaries",
+    "authors": [
+      "Inderjeet Singh"
+    ],
+    "abstract": "Finite safety assessments cannot exclude an adversary that preserves unattacked behavior until certification and activates afterward. We characterize this limitation for embodied and tool-use AI. An adversary that matches the complete observation law until observable, irrevocable certification and retains intervention access afterward attains $v\\mathbb{E}[(n-S_0)_+]$ expected post-certification events over $n$ trials, where $v$ is the active event probability and $S_0$ the unattacked certification time. The result covers adaptive and privately randomized evaluators. Switching at certification is exactly optimal for a fixed likelihood-ratio test under memoryless, event-increasing interventions without a binding intervention budget. A positive clean-certification requirement forces linear worst-case expected excess when intervention raises event rates over an authorized deployment horizon, even if certification is deferred to the deadline. In simulated RoCo collaboration, switching yields commanded-separation violations in 34 of 36 post-certification episodes. Preregistered randomized AgentDojo trials estimate 1.98 additional security violations per four-task continuation (95% interval [1.67, 2.29]). An adversarial language-model controller infers hidden certification from noisy evaluation receipts and times intervention accordingly. With permanent revocation, a mixture likelihood-ratio monitor bounds cumulative excess above a prespecified reference rate at square-root order, up to logarithmic factors, on every sample path. A single fixed alternative can permit linear expected excess under stationary attacks. Against a controller observing the monitor's rule and statistic, live mixture monitoring reduces violations from 12.00 to 3.81 per 24 assigned task opportunities. Revocation also reduces tasks executed.",
+    "published": "2026-10-13",
+    "updated": "2026-10-13",
+    "primary_category": "cs.CR",
+    "pdf_url": "https://arxiv.org/pdf/2610.18948v1",
+    "abs_url": "http://arxiv.org/abs/2610.18948v1",
+    "category": "defense",
+    "summary_zh": "",
+    "has_code": false,
+    "code_url": ""
+  },
+  {
+    "arxiv_id": "2610.18462v2",
+    "title": "Readout Scaling Shapes Sparse Feature Recovery",
+    "authors": [
+      "Brian Xiao",
+      "Sarah Wilson"
+    ],
+    "abstract": "Readout scaling changes what a sparse autoencoder (SAE) learns, but the benefit of removing it depends on the data. We use readout-canonicalized decision-space (RC-DS) coordinates to remove singular-value gains while preserving retained decision information. At a fixed readout condition number, changing the generating distribution reverses which training coordinates recover known factors best. In our controlled coordinate-matching study, recovery is highest when training restores the space in which the factors were generated. When factors are generated before readout scaling, RC-DS increases mean sparse-factor recovery from 0.506 to 0.913 at condition number 100, compared with centered-logit training under the same budget. An exact wrapper reproduces RC-DS training to numerical precision, isolating training geometry rather than additional information. In neural policies, RC-DS improves mean logit reconstruction under the tested budgets. On three fixed language-model checkpoints, RC-DS has higher mean gain-free reconstruction in all 18 tested task-sparsity settings, while centered-logit SAEs reconstruct output logits better in 17. Small-label-head controls show that longer training reduces the reconstruction gap from 0.0198 to 0.0016. Together, these results show how readout scaling, the data distribution, and training shape sparse learning. RC-DS provides an information-preserving method for studying and controlling the readout's contribution. Separate label-detection and steering tests distinguish these reconstruction effects from task-specific feature usefulness.",
+    "published": "2026-10-13",
+    "updated": "2026-10-14",
+    "primary_category": "cs.LG",
+    "pdf_url": "https://arxiv.org/pdf/2610.18462v2",
+    "abs_url": "http://arxiv.org/abs/2610.18462v2",
+    "category": "defense",
+    "summary_zh": "",
+    "has_code": false,
+    "code_url": ""
+  },
+  {
+    "arxiv_id": "2610.18447v2",
+    "title": "Thinker-WM: A Unified World Model with Shared Multimodal Representations for Embodied Intelligence",
+    "authors": [
+      " Thinker Team",
+      "Peng Gao",
+      "Jichao Jiao",
+      "Chen Liao",
+      "Daqin Luo",
+      "Yiming Ma",
+      "Baiyu Pan",
+      "Hailin Shi",
+      "Jiyuan Wang",
+      "Xiangming Xu",
+      "Xiongwei Zhao"
+    ],
+    "abstract": "World models have emerged as a promising paradigm for embodied AI, yet existing systems often remain fragmented in the modalities they model and the functions they support. In particular, visual dynamics, geometric structure, and executable action are commonly coupled through separate interfaces or downstream modules rather than being jointly represented and evolved within a shared dynamics model. In this work, we present Thinker-WM, a unified multimodal world model that jointly models and generates RGB, metric depth, and robot action through a shared intermediate Unified Dynamics Transformer with modality-specific encoders and decoders. The model performs multimodal unification at the representation level: appearance, geometry, and action are transformed into a common dynamic representation and jointly evolved by shared parameters, while their distinct output structures are preserved. The same parameterization supports multiple functions, including joint video-action generation, world prediction, policy inference, action-conditioned generation, video-to-action generation, and inverse dynamics. To examine whether the shared representation captures action-related information, we introduce a lightweight motion probe that shows the frozen visual representation contains recoverable motion information. Thinker-WM is trained on a heterogeneous corpus comprising approximately 20K hours of egocentric video, 10K hours of real-robot data, and 1K hours of simulation data, including approximately 4K hours of real-robot data with aligned depth supervision. Extensive experiments demonstrate strong performance across embodied world-model evaluations. Thinker-WM ranks first on EWMBench, WorldOlympiad and WorldArena, while controlled studies further demonstrate the benefits of action conditioning, geometric interaction, and multi-function training within the shared representation.",
+    "published": "2026-10-13",
+    "updated": "2026-10-14",
+    "primary_category": "cs.AI",
+    "pdf_url": "https://arxiv.org/pdf/2610.18447v2",
+    "abs_url": "http://arxiv.org/abs/2610.18447v2",
+    "category": "other",
+    "summary_zh": "",
+    "has_code": false,
+    "code_url": ""
+  },
+  {
+    "arxiv_id": "2610.18933v1",
+    "title": "The Agentic Scientist: Orchestrating Coding Agents for Automated Scientific (Co-)Discovery",
+    "authors": [
+      "Robert Tjarko Lange",
+      "Luca Grillotti",
+      "Yutaro Yamada",
+      "Rujikorn Charakorn",
+      "David Ha"
+    ],
+    "abstract": "Modern coding agents are fundamentally reshaping the role of human input for computational research: they write code, launch in silico experiments, analyze their results, and autonomously operate with ever-increasing time horizons. Despite these developments, fully autonomous research agents suffer from a limited ideation radius and myopic hill-climbing search dynamics. To bridge this gap, we introduce The Agentic Scientist, an end-to-end distributed pipeline for human researchers to conduct computational research alongside modern coding agents. Building on its predecessor, our system decomposes research into task drafting, idea generation, planning, sandboxed experimentation, result aggregation, baseline and ablation construction, post-hoc analysis, and report writing. Importantly, each step in the pipeline is powered by the next generation of coding agents and leverages agentic self-verification. The overall research process is driven by a meta-controller that manages parallel research agents and enforces rubric verification at each stage. This design enables the same orchestration layer to be reused across heterogeneous domains with different execution environments, agentic coding harnesses, and evaluation metrics. Our system can be used across a spectrum of autonomy: either as a co-scientist tool or to perform end-to-end scientific investigation. Within the co-scientist setting, we leveraged a development version of our system to submit a single research paper, which got accepted for publication at ALIFE 2026. We further apply The Agentic Scientist fully autonomously to open problem-solving tasks in machine learning, and demonstrate the system's capability of scientific discovery across different domains of computational research. Our ablations suggest that reliable scientific autonomy depends not only on base model capabilities, but also on the cross-agent orchestration layer.",
+    "published": "2026-10-13",
+    "updated": "2026-10-13",
+    "primary_category": "cs.AI",
+    "pdf_url": "https://arxiv.org/pdf/2610.18933v1",
+    "abs_url": "http://arxiv.org/abs/2610.18933v1",
+    "category": "defense",
+    "summary_zh": "",
+    "has_code": false,
+    "code_url": ""
+  },
+  {
+    "arxiv_id": "2610.18088v2",
+    "title": "ResearchFlow-Eval: Tracing the Execution Gap in End-to-End Multi-Claim Autoresearch",
+    "authors": [
+      "Peng Jiang",
+      "Dongyang Li",
+      "Quanying Liu",
+      "Xiaoxuan Jia"
+    ],
+    "abstract": "Autoresearch systems increasingly undertake entire research projects. In practice, scientific research requires systems to pursue multiple interdependent claims through a continuous, multi-stage workflow and revise experiments as evidence accumulates. Existing evaluations of autoresearch systems, however, typically score isolated tasks or final artifacts, leaving these process-level capabilities largely unmeasured. We therefore introduce ResearchFlow-Eval, a fine-grained framework for assessing continuous scientific execution and iteration at both the stage and claim levels. Each evaluation is grounded in a published anchor paper, from which we derive stage-specific rubrics that decompose each research stage into dimensions and separately scored rubric items. Using these rubrics, we score each research stage and examine experimental execution in detail, focusing on multi-claim completion and revisions across attempts. We apply the evaluation framework to general-purpose agent harnesses, skill-augmented harnesses, and systems with research-specific orchestration. Across all evaluated systems, experimental execution consistently lags behind design and planning. Within execution, systems struggle to produce high-quality results and meet claim requirements, and repeated attempts rarely yield measurable improvements. Moreover, neither skill augmentation nor research-specific orchestration reliably yields higher scores. ResearchFlow-Eval thus extends autoresearch evaluation beyond isolated, single-objective runs to continuous workflows in which systems pursue multiple claims and refine their work across iterations.",
+    "published": "2026-10-13",
+    "updated": "2026-10-14",
+    "primary_category": "cs.AI",
+    "pdf_url": "https://arxiv.org/pdf/2610.18088v2",
+    "abs_url": "http://arxiv.org/abs/2610.18088v2",
+    "category": "other",
+    "summary_zh": "",
+    "has_code": false,
+    "code_url": ""
+  },
+  {
+    "arxiv_id": "2610.17895v2",
+    "title": "Interaction-as-a-Judge",
+    "authors": [
+      "Wayne Chi",
+      "I-Hung Hsu",
+      "Li Chen",
+      "Wei-Lin Chiang",
+      "Ion Stoica",
+      "Anastasios Nikolas Angelopoulos",
+      "Ameet Talwalkar",
+      "Chris Donahue",
+      "Cho-Jui Hsieh"
+    ],
+    "abstract": "Coding agents are tasked with producing sophisticated interactive applications such as websites, desktop applications, and games. While humans assess these applications interactively, current automated LLM evaluations primarily focus on code analysis and unit tests. This mismatch can cause LLM judges to miss failures that are immediately apparent to human users. We study Interaction-as-a-Judge, an evaluation paradigm where computer-use agents (CUAs) directly interact with an application. We demonstrate that Interaction-as-a-Judge can improve both evaluation and generation of interactive applications. To this end, we collect and release two complementary datasets: $6,858$ pairs of applications with human preferences and corresponding agent traces, and $222$ applications with human-verified requirement labels. Relative to standard non-interactive approaches, we find that Interaction-as-a-Judge improves evaluation in terms of predicting human preferences ($65.6\\% \\to 69.1\\%$) and requirement verification ($77.0\\% \\to 81.6\\%$). We also observe scaling benefits: across both preference alignment and requirement verification, higher-quality interactions improve performance. Finally, through both inference- and training-time experiments, we demonstrate that Interaction-as-a-Judge can also improve the quality of generated artifacts. At inference time, Interaction-as-a-Judge repairs $75.5\\%$ of broken requirements within five attempts, compared to $55.4\\%$ for code-only self-feedback. At training time, using Interaction-as-a-Judge as a reward signal improves win-rate over the base model by $6.7$pp while reducing both generated code length by $35.7\\%$ and build failure rates by $7.2$pp compared to a code-only reward signal.",
+    "published": "2026-10-13",
+    "updated": "2026-10-14",
+    "primary_category": "cs.LG",
+    "pdf_url": "https://arxiv.org/pdf/2610.17895v2",
+    "abs_url": "http://arxiv.org/abs/2610.17895v2",
+    "category": "alignment",
+    "summary_zh": "",
+    "has_code": false,
+    "code_url": ""
+  },
+  {
+    "arxiv_id": "2610.17856v2",
+    "title": "MMTA: Benchmarking Multimodal Temporal Analysis with Time Series, Text, and Vision",
+    "authors": [
+      "Ziyang Zhang",
+      "Shenyi Li",
+      "Yilin Wang",
+      "Ziyun Cui",
+      "Bowen Zhou",
+      "Wen Wu",
+      "Chao Zhang"
+    ],
+    "abstract": "Time-series analysis is increasingly studied in multimodal settings, yet most benchmarks pair temporal signals with text or with visualizations derived from the same signal. This leaves open whether multimodal large language models (MLLMs) can integrate time series with real-world visual evidence. We introduce MMTA (multimodal temporal analysis), a benchmark of tri-modal tasks with diverse cross-modal complementarity patterns among time series, text, and vision. MMTA spans nine domains -- robotics, autonomous driving, human action, manufacturing, AR assistance, healthcare, recommendation, finance, and climate -- under video+TS and image+TS layouts, with a 3,524-sample test split covering classification and forecasting. The benchmark standardizes heterogeneous real-world sources into a shared schema with domain-specific prompts, provenance documentation, and success-weighted metrics that penalize both wrong answers and failed generations. Evaluating eight open-source and proprietary MLLMs reveals a shared bottleneck: representing time series as text creates very long token sequences and weakens fine-grained alignment with visual evidence, especially in long-video settings. We then introduce TimeOmni-v, a multimodal LLM extension with a dedicated time-series encoder, temporal positional alignment, modality-aware token layout, and a forecasting head. TimeOmni-v improves long-video classification and time-series inference efficiency, showing that MMTA not only exposes representation and grounding failures but also motivates targeted model design.",
+    "published": "2026-10-13",
+    "updated": "2026-10-14",
+    "primary_category": "cs.LG",
+    "pdf_url": "https://arxiv.org/pdf/2610.17856v2",
+    "abs_url": "http://arxiv.org/abs/2610.17856v2",
+    "category": "alignment",
+    "summary_zh": "",
+    "has_code": false,
+    "code_url": ""
+  },
+  {
+    "arxiv_id": "2610.19240v1",
+    "title": "FinGREAT: Evaluating LLMs on Financial Graph-guided Retrieval And Typing",
+    "authors": [
+      "Ashman Mehra",
+      "Bryan Routledge",
+      "Jane JaeYeon Pyo",
+      "Pierre Jinghong Liang"
+    ],
+    "abstract": "Financial disclosures express the underlying relationships of double-entry accounting through unstructured text. While financial LLM benchmarks predominantly emphasize question answering and classification, schema-guided evidence discovery remains relatively under-explored. We investigate whether open-weight LLMs can extract and classify evidence corresponding to predefined double-entry accounting relationships underlying the text. Using a financial accounting graph comprising 11 nodes (accounts) and 11 edges (transaction types), we evaluate mid-sized models from 5 open-weight families across 1,300 SEC 10-K Item 7 filings spanning 26 years, comparing their extraction performance against three proprietary models. Results reveal substantial differences in extraction volume, edge distributions, and cross-model agreement. Building on this study, we introduce a human-annotated relation classification benchmark comprising 483 passages across three financial accounting categories, evaluating 34 open-weight and 10 proprietary models. The strongest open-weight and proprietary models achieve 84.1\\% and 92.8\\% accuracy, respectively, with considerable variation across accounting categories. Our findings highlight the importance of evaluating evidence discovery and relation understanding separately, while investigating locally deployable models for scalable, privacy-sensitive financial analysis.",
+    "published": "2026-10-13",
+    "updated": "2026-10-13",
+    "primary_category": "cs.LG",
+    "pdf_url": "https://arxiv.org/pdf/2610.19240v1",
+    "abs_url": "http://arxiv.org/abs/2610.19240v1",
+    "category": "privacy-leakage",
+    "summary_zh": "",
+    "has_code": false,
+    "code_url": ""
+  },
+  {
+    "arxiv_id": "2610.19128v1",
+    "title": "CLASHarness: Benchmarking Multi-Agent Conflict in Computer Use via a Controllable and Verifiable Generation Pipeline",
+    "authors": [
+      "Yuxiang Lai",
+      "Jike Zhong",
+      "Chengzhi Liu",
+      "Ming Li",
+      "Haonan Wang",
+      "Xiaofeng Yang",
+      "Liang Zhao",
+      "Youbao Tang",
+      "Ruixi Fan"
+    ],
+    "abstract": "Vision-language models (VLMs) are increasingly deployed in multi-agent systems to automate complex computer-use workflows, yet existing benchmarks mostly assume consistent, cooperative environments. In contrast, real-world collaboration rarely runs on consistent information: peer or sub-agents frequently report outdated states, issue contradictory instructions, or compete over shared permissions and files, forcing agents to check others' outputs and verify ground truth in the environment. Evaluating such conflict resolution remains challenging: manual authoring cannot scale across complex systems, while unconstrained LLM generation produces narrative drift, answer leakage, and unsatisfiable rubrics. We introduce CLASHarness (Conflict-Loaded Agent Scenario Harness), a controllable framework for generating verifiable multi-agent conflicts in computer use, with a benchmark of 600 multi-round tasks. By combining hierarchical scenario planning with an eight-step verified micro-pipeline, CLASHarness pre-commits decisive visual facts before rendering and compiles hybrid code and semantic graders directly from executed reference trajectories, guaranteeing every task is solvable by construction. Evaluating 15 frontier models on CLASHarness reveals three core bottlenecks. First, when sub-agent outputs conflict with the environment, weaker models blindly follow misleading information, whereas stronger models inspect visual evidence to verify ground truth. Second, resolving conflicts is much harder than finding them: while agents can spot inconsistencies, actively fixing system state drops task success significantly. Third, coordination protocols remain a universal bottleneck: even frontier models fail over 58% of closing actions, often forgetting to release shared locks or hand off tasks. CLASHarness provides a scalable, verifiable foundation for building reliable multi-agent systems.",
+    "published": "2026-10-13",
+    "updated": "2026-10-13",
+    "primary_category": "cs.MA",
+    "pdf_url": "https://arxiv.org/pdf/2610.19128v1",
+    "abs_url": "http://arxiv.org/abs/2610.19128v1",
+    "category": "privacy-leakage",
+    "summary_zh": "",
+    "has_code": false,
+    "code_url": ""
+  },
+  {
+    "arxiv_id": "2610.19084v1",
+    "title": "Beyond Aggregate Accuracy: Item-Level Transitions in Prompt Optimization",
+    "authors": [
+      "Chinmoy Mitra",
+      "Tarek Mahmud"
+    ],
+    "abstract": "Automatic prompt optimization (APO) uses feedback from model responses to improve prompts automatically. However, its effectiveness is usually measured through overall scores, which do not reveal which questions become correct, which previously correct answers become wrong, or whether improvements extend to unseen questions. We introduce Reflective Feedback-Driven Prompt Optimization (RFDPO), a tool that tracks recoveries (incorrect to correct), regressions (correct to incorrect), and churn (all changed outcomes). RFDPO uses this feedback to guide subsequent revisions and records prompt changes throughout optimization. We evaluate RFDPO across five benchmarks covering law, knowledge, instruction following, mathematics, and privacy, using GPT-5 as the optimizer and GPT-4o-mini and GPT-4.1 Mini as solvers. Our results show that overall accuracy can hide substantial changes: in five of nine configurations, churn was at least five times the absolute net change, and a single-item net change concealed up to 17 changed outcomes. Average validation gains were 7.9 percentage points, compared with 5.2 points on held-out tests. In a controlled ablation on LegalBench-Hearsay, item-level feedback reduced churn by 40% ($p=0.024$) while maintaining similar net gains. These findings motivate reporting recovery, regression, churn, and performance on unseen data alongside overall accuracy.",
+    "published": "2026-10-13",
+    "updated": "2026-10-13",
+    "primary_category": "cs.LG",
+    "pdf_url": "https://arxiv.org/pdf/2610.19084v1",
+    "abs_url": "http://arxiv.org/abs/2610.19084v1",
+    "category": "privacy-leakage",
+    "summary_zh": "",
+    "has_code": false,
+    "code_url": ""
+  },
+  {
+    "arxiv_id": "2610.19072v1",
+    "title": "Tracing Knowledge Lineage for Federated Unlearning under Mutual Distillation",
+    "authors": [
+      "Zihao Ding",
+      "Jun Huang",
+      "Guodong Wang"
+    ],
+    "abstract": "An edge server and nearby devices can train language models of different sizes together by mutual distillation. Federated unlearning (FU) and unlearning for large language models (LLMs) execute a removal request on one model. Under mutual distillation, however, the effect of the removed data has been copied into many students, and their uploads teach it back to the corrected teacher. We propose Holder-level Erasure via Replication-weighted Delta-closure (HERD), which decides which holders must be corrected. HERD records a knowledge lineage graph from the transfers that the server already performs and weights each edge by its transfer type. It computes how many times the residual at each holder will be copied and selects the cheapest set of holders whose correction bounds the cumulative residual after the request. A transfer guard and a rejoin rule cover the holders left uncorrected or offline. We prove that partial correction suffices only when the copy number of the lineage graph is below one, that averaging alone never reaches one, and that the correction set remains valid under link outages. On TOFU, HERD leaves 18% to 52% less cumulative residual than the strongest baseline at 6% to 12% of its correction cost.",
+    "published": "2026-10-13",
+    "updated": "2026-10-13",
+    "primary_category": "cs.NI",
+    "pdf_url": "https://arxiv.org/pdf/2610.19072v1",
+    "abs_url": "http://arxiv.org/abs/2610.19072v1",
+    "category": "unlearning",
     "summary_zh": "",
     "has_code": false,
     "code_url": ""
@@ -9996,6 +10522,27 @@
     "pdf_url": "https://arxiv.org/pdf/2610.17503v1",
     "abs_url": "http://arxiv.org/abs/2610.17503v1",
     "category": "robustness",
+    "summary_zh": "",
+    "has_code": false,
+    "code_url": ""
+  },
+  {
+    "arxiv_id": "2610.16596v2",
+    "title": "Towards Modality-Agnostic Seizure Classification: A Unified Deep Learning Framework for Heterogeneous EEG and Intracranial EEG Signals",
+    "authors": [
+      "Ramya Sundaram",
+      "Muhammad Aslam Jarwar",
+      "M Uma",
+      "Sunder Ali Khowaja",
+      "Qurat-Ul-Ain Mastoi"
+    ],
+    "abstract": "Seizure prediction and detection, essential for clinical treatment of epilepsy, remain the crucial task of this neurological disease. EEG and iEEG are widely used to analyze epilepsy due to its capability of capturing discriminative brain activities at high time resolution. However, existing works generally analyze either EEG or iEEG seizure activity separately, where EEG analysis has been well-researched, while more and more works consider iEEG for its higher specificity at the spatial level and signal quality. Currently, most of the existing seizure prediction systems are single-modal in nature, which limits its application to a variety of clinical conditions. Therefore, a common framework to analyze seizures with both EEG and iEEG signals needs to be developed. This paper presents a new framework of multimodal seizure classification integrating the heterogeneous EEG and iEEG recordings from different subjects and sources. A specific framework, called Unified Multimodal Signal Harmonization (UMSH), is developed for harmonizing signals with varied sampling rates and recording conditions. Moreover, to handle the extremely class-imbalanced problem in the data sets, we use a Conditional Generative Adversarial Network (cGAN) based data augmentation technique to generate synthetic samples to balance the class distribution. The proposed framework uses the EEGNet-Vision Transformer (EEGNet-ViT) as the feature extraction and classification network to learn the local discriminative patterns as well as global contextual information in the multimodal seizure data. Experimental results demonstrate the effectiveness of the proposed framework for robust seizure classification, emphasizing the potential of integrated EEG-iEEG multimodal learning in advancing next-generation epilepsy monitoring and clinical decision-support systems.",
+    "published": "2026-10-12",
+    "updated": "2026-10-14",
+    "primary_category": "cs.LG",
+    "pdf_url": "https://arxiv.org/pdf/2610.16596v2",
+    "abs_url": "http://arxiv.org/abs/2610.16596v2",
+    "category": "defense",
     "summary_zh": "",
     "has_code": false,
     "code_url": ""
